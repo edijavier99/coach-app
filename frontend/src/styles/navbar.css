@@ -1,0 +1,67 @@
+.navbar-toggler {
+    margin-right: 25px;
+}
+nav {
+    font-size: 18px;
+    margin: 0 auto;
+    position: sticky !important;
+    top: 0;
+    backdrop-filter: blur(10px); /* Aplica el efecto de desenfoque */
+    z-index: 99;
+    color: white;
+}
+
+.nav-item {
+    position: relative;
+    transition: transform 0.3s ease; 
+}
+.nav-item:hover{
+    transform: translateY(-13%)
+}
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: transparent;
+    transition: width 0.5s ease;
+}
+
+.nav-item:hover::after { 
+    width: 100%;
+    background-color: rgb(226, 163, 38);
+}
+
+.navbar-brand {
+    transform: translateX(30%);
+    position: relative;
+    left: 5%;
+    font-size: 30px;
+    letter-spacing: 7px;
+}
+
+.navbar-logo {
+    width: 80px;
+    height: 60px;
+}
+@media (max-width: 790px) {
+    .nav-item {
+        text-align: center;
+    }
+    .navbar-brand {
+        left: 25px;
+    }
+    .navbar-toggler {
+        margin-right: 10px;
+    }
+   
+    .navbar-nav{
+        align-items: center;
+    }
+    .nav-item::after {
+        transition: width 0.1s ease;
+    }
+    
+}

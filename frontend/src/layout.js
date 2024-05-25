@@ -4,7 +4,7 @@ import ScrollToTop from "./components/scrollToTop";
 // import { BackendURL } from "./component/backendURL";
 
 import injectContext from "./store/appContect";
-import App from "./App";
+import App from "./views/Home";
 //create your first component
 const Layout = () => {
     // const basename = process.env.BASENAME || "";
