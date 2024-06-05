@@ -1,0 +1,25 @@
+#faq{
+    text-align: center;
+}
+.faq-header h2{
+    font-size: 2.3rem;
+}
+.faq-body article{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+.faq-question{
+    background-color: rgb(146, 237, 240);
+    border-radius: 15px;
+}
+.faq-answer{
+    background-color: rgb(227, 225, 225);
+    border-radius: 15px;
+
+}
+.fa-question, .fa-comment{
+    font-size: 40px;
+ 
+}

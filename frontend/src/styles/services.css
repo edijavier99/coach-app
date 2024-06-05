@@ -37,6 +37,6 @@
 .service-body h2{
     font-weight: 750;
 }
-.fa-dumbbell{
+.fa-dumbbell, .fa-brain, .fa-heart-circle-check{
     font-size: 25px;
 }

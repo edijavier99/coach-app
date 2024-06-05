@@ -20,13 +20,13 @@ export const Services = () => {
                     <ServicesCard 
                         image={two}  
                         title="Mindset"
-                        icon="fa-dumbbell"
+                        icon="fa-brain"
                         description="Develop a positive mindset and overcome mental barriers with our proven strategies for mindfulness and self-improvement."
                     />
                     <ServicesCard 
                         image={three}
                         title="Health"
-                        icon="fa-dumbbell"
+                        icon="fa-heart-circle-check"
                         description="Embrace well-being and live your best life with our expert advice on nutrition, stress management, and holistic health."
                     />
                 </div>

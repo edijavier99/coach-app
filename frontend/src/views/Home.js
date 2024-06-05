@@ -5,6 +5,7 @@ import { PopupWidget } from "react-calendly";
 import { Introduction } from "../components/introduction";
 import {Services} from "../components/services"
 import { ServiceCard } from "../components/serviceCard";
+import { FAQ } from "../components/faq";
 
 function Home() {
   const dietDescription = "Get personalized diet plans tailored to your nutritional needs. Our experts will create a customized diet plan based on your dietary preferences, health goals, and lifestyle.";
@@ -59,6 +60,7 @@ function Home() {
           imgTwo="https://plus.unsplash.com/premium_photo-1682097294168-bb76a42b74c8?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           imgThree="https://images.unsplash.com/photo-1514415008039-efa173293080?q=80&w=1773&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       />
+      <FAQ/>
     </section>
   );
 }

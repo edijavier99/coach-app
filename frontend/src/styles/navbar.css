@@ -57,9 +57,14 @@ nav {
     vertical-align: middle;
     font-weight: bold;
     font-size: 14px;
-    color: #fff;
+    color: #fff !important;
     cursor: pointer;
     text-decoration: none;
+    transition: transform 0.3s ease; /* Transición suave */
+
+}
+.booking:hover{
+    transform: translateY(-5px);
 }
 
 @media (max-width: 790px) {
