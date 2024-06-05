@@ -1,0 +1,42 @@
+
+#services h3 {
+    font-weight: 900;
+    font-size: 40px;
+    text-align: center;
+}
+.service-card{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: transform 0.3s ease; /* Agregar una transición suave */
+
+}
+.card-number-img{
+    height:200px;
+}
+.service-body {
+    padding: 20px;
+    text-align: center;
+    min-height: 250px;
+    border-top: 1px solid transparent; /* Establecer un borde superior transparente */
+    border-bottom: none; /* Eliminar el borde inferior */
+    background-color: rgb(246, 243, 243);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    transition: background-color 0.3s ease; /* Agregar una transición suave */
+}
+.service-card:hover{
+    transform: scale(1.10); /* Escalar el elemento al 105% en hover */
+}
+.service-body:hover{
+    background-color: rgb(227, 226, 226);
+}
+.service-body h2{
+    font-weight: 750;
+}
+.fa-dumbbell{
+    font-size: 25px;
+}

@@ -10,12 +10,15 @@
 .carousel-caption {
     position: absolute; 
     right: 15%;
-    top: 165px; 
+    top: 0px; 
     left: 15%;
-    z-index: 10;
+    z-index: 1;
     padding-top: 20px;
     padding-bottom: 20px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 .carousel-inner h2{
     margin-left: -30px;
@@ -32,34 +35,73 @@
     font-size: 50px;
     color: white;
 }
-.slogan-header{
-    font-size: 4.9rem;
+.slogan-header {
+    font-size: 5.3rem;
     font-weight: 900;
     color: white;
     display: flex;
     align-items: center;
+    justify-content: center; /* Centro horizontalmente */
+    text-align: center; /* Centro el texto dentro del elemento */
 }
-.slogan-description{
+.slogan-description {
     font-size: 1.5rem;
     color: white;
+    text-align: center; /* Centro el texto dentro del elemento */
 }
-/* #slogan{
+#slogan{
     border-radius: 20px;
     height: auto !important;
-    background-color: rgba(77, 77, 77, 0.656);
-} */
-.btnComprar{
-    background-color: white;
-    border: none;
-    height: 40px;
-    border-radius: 10px;
-    margin-top: 70px;
-    color: black !important;
+    margin-bottom: 60px;
+}
+.bookingHero{
+    display: flex;
+    align-items: center;
+}
+
+.carousel-dark .carousel-indicators [data-bs-target] {
+    background-image: url("https://images.unsplash.com/photo-1575722290270-626b0208df99?q=80&w=2432&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-size: cover;
+    width:25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-bottom: 50px;
+}
+
+@media (max-width:768px){
+    .carousel-caption {
+        top: -100px;
+    }
+    .slogan-header {
+        font-size: 3rem;
+        margin-bottom: 27px !important;
+    } 
+    .slogan-description {
+        font-size: 1.3rem;
+    }
+    #slogan {
+        margin-bottom: 60px;
+        margin-bottom: 27px !important;
+    }
+    .carousel-dark .carousel-indicators [data-bs-target] {
+        margin-bottom: 80px;
+    }
+    
+}
+
+@media (max-width:576px){
+    .slogan-header {
+        font-size: 2.7rem;
+        margin-bottom: 15px !important;
+    }
+    #slogan {
+        margin-bottom: 15px !important;
+    }
+    .slogan-description {
+        font-size: 1rem;
+    }
 }
 @media (max-width: 470px){
-    .carousel-caption {
-        top: 155px; 
-    }
     .smallSlogan{
         display: flex;
         justify-content: center;

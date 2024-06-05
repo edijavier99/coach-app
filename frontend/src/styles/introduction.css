@@ -1,0 +1,78 @@
+#introduction {
+    width: 85%;
+    background-color: white;
+    transform: translateY(-10%);
+    border-radius: 20px;
+}
+
+.introduction-img-container {
+    height: 300px;
+    overflow: hidden;
+    padding: 20px;
+    position: relative;
+}
+
+.introduction-img-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+
+
+.introduction-img-container .img-hover-box {
+    position: absolute;
+    bottom: 20px;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    padding: 25px;
+    border-radius: 10px;
+}
+.show-hover-box .img-hover-box {
+    opacity: 1;
+}
+
+.introduction-description-container {
+    padding: 30px;
+    text-align: center;
+}
+
+.intro-middle-info p {
+    font-weight: 800;
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.img-hover-box h6,
+.img-hover-box p,
+.img-hover-box .fa-brands {
+    background-color: black;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.gray-image-scale{
+
+    filter: grayscale(100%); /* Aplica el filtro de escala de grises al hacer hover */
+}
+.img-hover-box h6 {
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.img-hover-box .fa-brands {
+    font-size: 23px;
+    margin-right: 10px;
+}
+
+@media (max-width: 1200px) {
+    #introduction {
+        transform: translateY(-5%);
+    }
+}

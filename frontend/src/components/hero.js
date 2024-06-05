@@ -13,14 +13,17 @@ export const Hero = () =>{
                 <button type="button" data-bs-target="#carouselHero" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="10000">
+                <div class="carousel-item first-slide-hero active" data-bs-interval="10000">
                 <img src="https://cdn.pixabay.com/photo/2021/05/14/08/44/running-6252827_1280.jpg" class="d-block w-100" alt="..."/>
                 <div class="carousel-caption">
-                    <div className="d-flex flex-column align-items-center justify-content-around  h-50" id="slogan">
-                        <h1 className="slogan-header mb-5">Small steps thrive amid <br/> significant changes</h1>
-                        <p className="slogan-description">By shifting our mindset, nutrition, and physical activity, even small changes can lead to remarkable transformations. </p>
+                    <div className="d-flex flex-column align-items-start justify-content-around  " id="slogan">
+                        <h1 className="slogan-header mb-5">Small steps thrive amid significant changes</h1>
+                        <p className="slogan-description">
+                        <span className="slogan-header-description">Hi!</span>
+                        We help you enhance your physical, mental, and overall health. Through small adjustments in mindset, nutrition, and physical activity, even minor changes can lead to remarkable transformations.
+                        </p>
                     </div>
-                    <button className="btnComprar"  onClick={()=>navigate("/")}>Make A Booking</button>
+                    <a className="booking bookingHero" href="/appointment">Make A Booking</a>
                 </div>
                 </div>
                 <div class="carousel-item" data-bs-interval="2000">

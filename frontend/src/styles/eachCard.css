@@ -1,0 +1,57 @@
+#each-service-card {
+    margin-bottom: 20px; /* Margen inferior para separar los elementos */
+}
+
+.sv-card-left,
+.sv-card-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.each-service-title {
+    font-size: 2.3rem;
+    font-weight: 700;
+}
+
+.text-muted {
+    margin-bottom: 10px; /* Espaciado inferior para la categoría */
+}
+
+.each-service-description {
+    max-width: 500px;
+    text-align: center; /* Alineación del texto del servicio */
+}
+
+.sv-card-left {
+    order: 2; /* Cambiar el orden del elemento en el flujo */
+}
+
+.sv-card-right {
+    order: 1; /* Cambiar el orden del elemento en el flujo */
+}
+
+/* Estilos para el Swiper */
+.mySwiper {
+    height: 400px;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
