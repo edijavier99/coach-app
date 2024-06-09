@@ -54,40 +54,36 @@ export const Introduction = () => {
 
     return (
         <section id="introduction" className="container-fluid">
-            <header className="row mb-3">
-                <div className="col-12 col-md-5 col-lg-5 introduction-img-container">
-                    <img alt="Jesus Image" src="https://images.unsplash.com/photo-1516914943479-89db7d9ae7f2?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-                </div>
-                <div className="col-12 col-md-7 col-lg-7 introduction-description-container">
-                    <h2>I was once just like you.</h2>
-                    <hr />
-                    <p>{introductionText}</p>
-                </div>
+            <header className="row">
+                <p className="mb-0 fw-bold">HEALTH | FITNESS | WEALTH | MINDSET</p>
             </header>
-            <div className="row d-flex justify-content-end">
-                <div className="col-md-3 intro-middle-info">
-                    <p>HEALTH AND FITNESS</p>
-                    <hr />
-                    <p>WEALTH AND MINDSET</p>
-                </div>
-            </div>
-            <main className="row mt-3">
-                <div className="col-12 col-md-7 mt-2">
-                    <h2>Hi, I'm Jesus</h2>
-                    <hr />
-                    <p>{introPersonalInfo}</p>
-                    <a className="booking" href="/appointment">Make A Booking</a>
-                </div>
-                <div ref={imgContainerRef} className="col-md-6 col-lg-5 introduction-img-container">
-                    <img alt="Antonio Image" className="gray-img" src="https://images.unsplash.com/photo-1599834562135-b6fc90e642ca?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-                    {/* <div className="img-hover-box">
-                        <h6>Jesus Antonio</h6>
-                        <p>@jesusantonio</p>
-                        <i className="fa-brands fa-linkedin"></i>
-                        <i className="fa-brands fa-facebook"></i>
-                    </div> */}
+            <main className="row py-5">
+                <div className="row profile-info mx-auto">
+                    <div className="col-md-12 col-lg-5 profile-image-container">
+                        <img alt="" src="https://images.unsplash.com/photo-1578924608828-79a71150f711?q=80&w=2948&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+                    </div>
+                    <div className="col-md-12 col-lg-7 py-4">
+                        <h3>I Was Once Like You</h3>
+                        <p>{introductionText}</p>
+                        <p className="text-muted">Personal Coach</p>
+                        <button className="btn booking">Learn More</button>
+                    </div>
                 </div>
             </main>
+            <main className="row py-5">
+                <div className="row profile-info mx-auto">
+                <div className="col-md-12 col-lg-7 py-4">
+                        <h3>Hi, I’m Jesus.</h3>
+                        <p>{introPersonalInfo}</p>
+                        <p className="text-muted">Jesus Antonio</p>
+                        <button className="btn booking">Learn More</button>
+                    </div>
+                    <div className="col-md-12 col-lg-5 profile-image-container">
+                        <img alt="" src="https://images.unsplash.com/photo-1605296866985-34ba3c0b527b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+                    </div>
+                </div>
+            </main>
+            
         </section>
     );
 };

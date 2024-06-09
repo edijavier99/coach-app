@@ -5,13 +5,13 @@ import 'swiper/css/pagination';
 import { Autoplay, Pagination, Mousewheel } from 'swiper/modules';
 import "../styles/eachCard.css";
 
-export const ServiceCard = ({ title, category, delayTime, description, imgOne, imgTwo, imgThree, reverse }) => {
+export const ServiceCard = ({ title, category, delayTime, description, imgOne, imgTwo, imgThree, reverse, identification }) => {
     const cardLeftClass = reverse ? "sv-card-right col-md-6" : "sv-card-left col-md-6";
     const cardRightClass = reverse ? "sv-card-left col-md-6" : "sv-card-right col-md-6";
 
     return (
         <article id="each-service-card" className="container-fluid">
-            <div className="row col-11 mx-auto">
+            <div className="row col-11 mx-auto" id={identification}>
                 <div className={cardLeftClass}>
                     <h2 className='each-service-title'>{title}</h2>
                     <p className="text-muted">{category}</p>

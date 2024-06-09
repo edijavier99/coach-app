@@ -40,3 +40,8 @@
 .fa-dumbbell, .fa-brain, .fa-heart-circle-check{
     font-size: 25px;
 }
+
+.service-card-link{
+    color: black !important;
+    text-decoration: none;
+}

@@ -1,25 +1,55 @@
-#faq{
+#faq {
     text-align: center;
 }
-.faq-header h2{
+
+.faq-header h2 {
     font-size: 2.3rem;
+    font-weight: 800;
 }
-.faq-body article{
+
+.faq-header p {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.faq-body article {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 25px;
 }
-.faq-question{
+
+.faq-question {
     background-color: rgb(146, 237, 240);
     border-radius: 15px;
 }
-.faq-answer{
-    background-color: rgb(227, 225, 225);
-    border-radius: 15px;
 
+.faq-answer {
+    background-color: rgb(227, 225, 225);
+    border-radius: 20px;
 }
-.fa-question, .fa-comment{
+
+#card-description {
+    border-radius: 15px;
+    font-size: clamp(14px, 1rem, 18px); 
+    overflow: hidden !important;
+    display: -webkit-box ;
+    max-height: 40px; /* Ajusta esta altura según tu contenido */
+
+    -webkit-line-clamp: 1 ; 
+    -webkit-box-orient: vertical ;
+    word-wrap: break-word ;
+    text-overflow: ellipsis ; 
+    transition: max-height 0.5s ease-in-out; /* Transición más suave */
+}
+
+#card-description.expanded {
+    -webkit-line-clamp: unset;
+    max-height: 600px; /* Ajusta esta altura según tu contenido */
+    transition: max-height 0.8s ease; /* Transición más suave */
+}
+
+.fa-question, .fa-comment {
     font-size: 40px;
- 
+    cursor: pointer;
 }

@@ -29,7 +29,8 @@ nav {
 }
 .nav-item:hover::after { 
     width: 100%;
-    background-color: rgb(226, 163, 38);
+    background: linear-gradient(rgb(92, 212, 138),  rgb(0, 162, 255))
+
 }
 .navbar-brand {
     height: 70px;

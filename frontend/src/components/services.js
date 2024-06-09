@@ -15,17 +15,20 @@ export const Services = () => {
                         image={one}
                         title="Fitness"
                         icon="fa-dumbbell"
+                        link="#fitness" 
                         description="Achieve your fitness goals with our personalized training programs designed to help you improve strength, flexibility, and endurance."
                     />
                     <ServicesCard 
                         image={two}  
                         title="Mindset"
                         icon="fa-brain"
+                        link="#mindset" 
                         description="Develop a positive mindset and overcome mental barriers with our proven strategies for mindfulness and self-improvement."
                     />
                     <ServicesCard 
                         image={three}
                         title="Health"
+                        link="#health" 
                         icon="fa-heart-circle-check"
                         description="Embrace well-being and live your best life with our expert advice on nutrition, stress management, and holistic health."
                     />
