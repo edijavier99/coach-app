@@ -8,11 +8,10 @@ export const Prices = () => {
       <p className="plan-description mb-5">
         Discover our tailored coaching sessions designed to elevate your mindset, fitness, and health. Book your first session for free and experience a personalized introduction to our transformative services. Let's embark on this journey together to achieve your goals and unlock your full potential.
       </p>
-      <div className="grid">
+      <div className="grid col-11">
         <div>
           <article className="card col-10 col-lg-11 mx-auto">
             <h2>Mindset</h2>
-            
             <var><abbr>£</abbr>25<small>/Session</small></var>
             <ul>
               <li>

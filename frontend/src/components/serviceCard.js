@@ -16,7 +16,7 @@ export const ServiceCard = ({ title, category, delayTime, description, imgOne, i
                     <h2 className='each-service-title'>{title}</h2>
                     <p className="text-muted">{category}</p>
                     <p className='each-service-description'>{description}</p>
-                    <a className="booking bookingHero" href="/appointment">Make A Booking</a>
+                    <a className="booking bookingHero mt-4" href="/appointment">Make A Booking</a>
                 </div>
                 <div className={cardRightClass}>
                     <Swiper

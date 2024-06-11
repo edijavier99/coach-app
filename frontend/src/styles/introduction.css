@@ -45,6 +45,13 @@
     .profile-image-container {
         height: 360px; 
     }
+    .down {
+        flex-direction: column-reverse !important; /* Invertimos el orden en pantallas pequeñas */
+    }
+    #introduction button{
+       display: flex;
+       margin: 0 auto;
+    }
 }
 
 

@@ -8,7 +8,7 @@ export const ServicesCard = (props) => {
           <div className="service-body">
             <h2>{props.title}</h2>
             <p>{props.description}</p>
-            <i className={`fa-solid ${props.icon}`}></i>
+            <i className={`fa-solid ${props.icon} mt-3`}></i>
           </div>
       </a>
     </article>

@@ -8,20 +8,15 @@ import { ServiceCard } from "../components/serviceCard";
 import { Newsletter } from "../components/newsletter";
 import { Footer } from "../components/footer";
 import { Prices } from "../components/prices";
+import { Reviews } from "../components/reviews";
 
 function Home() {
   const dietDescription = "Get personalized diet plans tailored to your nutritional needs. Our experts will create a customized diet plan based on your dietary preferences, health goals, and lifestyle.";
   const routinesDescription = "Discover personalized workout routines designed to help you achieve your fitness goals. Our fitness experts will create a tailored exercise plan that suits your fitness level, preferences, and objectives.";
   const mindHealthDescription = "Experience treatments focused on improving mental health and well-being. Our mental health professionals offer a range of therapies and techniques to help you manage stress, anxiety, and other mental health challenges.";
-    const menu = [
-      { label: "Home", url: "/" },
-      { label: "About Us", url: "/about-us" },
-      { label: "My History", url: "/about-me" },
-      { label : "Booking", url: "/appointment"}
-  ];
+   
   return (
     <section>
-      <Navbar items={menu}  />
       <PopupWidget
         url="https://calendly.com/edijavier10"
         rootElement={document.getElementById("root")}
@@ -64,9 +59,8 @@ function Home() {
           imgThree="https://images.unsplash.com/photo-1514415008039-efa173293080?q=80&w=1773&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       />
       <Prices/>
+      <Reviews/>
       <Newsletter />
-      <Footer/>
-
     </section>
   );
 }

@@ -66,19 +66,19 @@ export const Introduction = () => {
                         <h3>I Was Once Like You</h3>
                         <p>{introductionText}</p>
                         <p className="text-muted">Personal Coach</p>
-                        <button className="btn booking">Learn More</button>
+                        <button className="btn booking ">Learn More</button>
                     </div>
                 </div>
             </main>
-            <main className="row py-5">
-                <div className="row profile-info mx-auto">
+            <main className="row py-5 ">
+                <div className="row profile-info mx-auto down">
                 <div className="col-md-12 col-lg-7 py-4">
                         <h3>Hi, I’m Jesus.</h3>
                         <p>{introPersonalInfo}</p>
                         <p className="text-muted">Jesus Antonio</p>
                         <button className="btn booking">Learn More</button>
                     </div>
-                    <div className="col-md-12 col-lg-5 profile-image-container">
+                    <div className="col-md-12 col-lg-5 profile-image-container ">
                         <img alt="" src="https://images.unsplash.com/photo-1605296866985-34ba3c0b527b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
                     </div>
                 </div>
