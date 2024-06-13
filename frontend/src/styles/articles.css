@@ -1,0 +1,49 @@
+.aa-header{
+    border-radius: 20px;
+    background-color: rgb(209, 209, 209);
+}
+.accordion-container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    background-color: rgb(209, 209, 209);
+  }
+  
+  .accordion-titles {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom:10px;
+    border-radius: 10px;
+  }
+  
+  .accordion-title-button {
+    flex: 1;
+    text-align: center;
+    background: none;
+    border: none;
+    padding: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 10px;
+  }
+  
+  .accordion-title-button:hover,
+  .accordion-title-button.active {
+    background-color: #4c8dcf;
+  }
+  
+  .accordion-contents {
+    border-top: none;
+  }
+  
+  .accordion-content {
+    display: none;
+    padding: 1rem;
+  }
+  
+  .accordion-content.show {
+    display: block;
+  }
+  
+  

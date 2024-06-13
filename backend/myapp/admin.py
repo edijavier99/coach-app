@@ -1,7 +1,5 @@
 from django.contrib import admin
-from .models import User
-from .models import Cars
+from .models import Article
 
 # Register your models here.
-admin.site.register(User)
-admin.site.register(Cars)
+admin.site.register(Article)

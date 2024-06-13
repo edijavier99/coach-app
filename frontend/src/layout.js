@@ -5,6 +5,8 @@ import { BookingView } from "./views/booking";
 import { Blog } from "./views/Blog";
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
+import { Login } from "./views/Login";
+import { Admin } from "./views/Admin";
 // import { BackendURL } from "./component/backendURL";
 
 import injectContext from "./store/appContect";
@@ -23,16 +25,18 @@ const Layout = () => {
     return (
         <div>
             <BrowserRouter>
-                <Navbar items={menu}  />
+                {/* <Navbar items={menu}  /> */}
                 <ScrollToTop>
                     <Routes>
                         <Route element={<App />} path="/" />    
-                        <Route element={<BookingView />} path="/appointment" />   
-                        <Route element={<Blog />} path="/blog" />             
+                        <Route element={<BookingView />} path="/appointment" /> 
+                        <Route element={<Login />} path="/login" />               
+                        <Route element={<Blog />} path="/blog" />    
+                        <Route element={<Admin />} path="/admin" />             
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                 </ScrollToTop>
-                <Footer/>
+                {/* <Footer/> */}
             </BrowserRouter>
         </div>
     );
