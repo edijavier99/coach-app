@@ -20,6 +20,7 @@ const AccordionItem = ({ index, title, activeIndex, setActiveIndex }) => {
 const Articles = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
+
   const items = [
     {
       title: 'Create Article',

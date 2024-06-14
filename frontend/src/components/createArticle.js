@@ -2,8 +2,25 @@ import React, { useState } from "react";
 import "../styles/createArticle.css";
 
 const CreateArticle = () => {
+  const cloudName = 'dhyrv5g3w';
+  const uploadPreset = 'ptwmh2mt';
+  const [article, setArticle] = useState({
+    article_title: "",
+    article_subtitle: "",
+    article_description: "",
+    article_category: "fitness" // Valor predeterminado
+  });
+
   const [files, setFiles] = useState([]);
-  const [imagePreview, setImagePreview] = useState(null); // Estado para la vista previa de la imagen
+  const [imagePreview, setImagePreview] = useState(null);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setArticle({
+      ...article,
+      [name]: value
+    });
+  };
 
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
@@ -40,18 +57,83 @@ const CreateArticle = () => {
   };
 
   const handleReset = () => {
+    setArticle({
+      article_title: "",
+      article_subtitle: "",
+      article_description: "",
+      article_category: "fitness"
+    });
     setFiles([]);
     setImagePreview(null);
   };
 
-  const handleSubmit = (e) => {
+  const uploadToCloudinary = async (file) => {
+    const folder = "BlogJesus";  // Especifica el nombre de la carpeta aquí
+    const url = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', uploadPreset);
+    formData.append('folder', folder);
+
+    const response = await fetch(url, {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      return data.secure_url;
+    } else {
+      throw new Error('Failed to upload image');
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Lógica para enviar el artículo al servidor
-    console.log("Article Title:", e.target.articleTitle.value);
-    console.log("Article Subtitle:", e.target.articleSubtitle.value);
-    console.log("Article Description:", e.target.articleDescription.value);
+    console.log("Article Title:", article.article_title);
+    console.log("Article Subtitle:", article.article_subtitle);
+    console.log("Article Description:", article.article_description);
+    console.log("Article Category:", article.article_category);
+
+    let article_image_url = '';
+
     if (files.length > 0) {
-      console.log("File:", files[0]);
+      try {
+        const file = files[0];
+        article_image_url = await uploadToCloudinary(file);
+        console.log("Image URL:", article_image_url);
+      } catch (error) {
+        console.error("Error uploading image:", error);
+        return;
+      }
+    }
+
+    const currentDate = new Date().toISOString().split('T')[0];  // Formato YYYY-MM-DD
+
+    const articleData = {
+      ...article,
+      article_image_url,
+      article_day_posted: currentDate  // Añadir la fecha actual
+    };
+
+    try {
+      const response = await fetch('http://127.0.0.1:8000/myapp/api/articles/create/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(articleData)
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Article saved successfully:", data);
+        handleReset(); // Reset form after successful submission
+      } else {
+        console.error("Error saving article:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error saving article:", error);
     }
   };
 
@@ -60,21 +142,64 @@ const CreateArticle = () => {
       <div className="row mb-3">
         <div className="col-md-6">
           <label htmlFor="article-title" className="form-label">Article Title</label>
-          <input id="article-title" name="articleTitle" type="text" className="form-control" placeholder="Enter Article Title" required />
+          <input
+            id="article-title"
+            name="article_title"
+            type="text"
+            className="form-control"
+            placeholder="Enter Article Title"
+            value={article.article_title}
+            onChange={handleInputChange}
+            required
+          />
         </div>
         <div className="col-md-6">
           <label htmlFor="article-subtitle" className="form-label">Article Subtitle</label>
-          <input id="article-subtitle" name="articleSubtitle" type="text" className="form-control" placeholder="Enter Article Subtitle" required />
+          <input
+            id="article-subtitle"
+            name="article_subtitle"
+            type="text"
+            className="form-control"
+            placeholder="Enter Article Subtitle"
+            value={article.article_subtitle}
+            onChange={handleInputChange}
+            required
+          />
         </div>
       </div>
 
       <div className="mb-3">
         <label htmlFor="article-description" className="form-label">Article Description</label>
-        <textarea id="article-description" name="articleDescription" className="form-control" placeholder="Enter Article Description" required />
+        <textarea
+          id="article-description"
+          name="article_description"
+          className="form-control"
+          placeholder="Enter Article Description"
+          value={article.article_description}
+          onChange={handleInputChange}
+          required
+        />
+      </div>
+
+      <div className="mb-3">
+        <label htmlFor="article-category" className="form-label">Category</label>
+        <select
+          id="article-category"
+          name="article_category"
+          className="form-select"
+          value={article.article_category}
+          onChange={handleInputChange}
+          required
+        >
+          <option value="fitness">Fitness</option>
+          <option value="health">Health</option>
+          <option value="mindset">Mindset</option>
+          <option value="nutrition">Nutrition</option>
+        </select>
       </div>
 
       <div
-        className={`dropzone-area p-3  rounded ${imagePreview ? "has-image" : ""}`}
+        className={`dropzone-area p-3 rounded ${imagePreview ? "has-image" : ""}`}
         onDragOver={handleDropzoneDrag}
         onDragLeave={handleDropzoneDrag}
         onDrop={handleDropzoneDrop}
@@ -110,18 +235,20 @@ const CreateArticle = () => {
             <label htmlFor="upload-file" className="btn btn-outline-primary">
               Choose File
             </label>
-            <p className="message mt-3">{files.length > 0 ? `${files[0].name}, ${files[0].size} bytes` : "No Files Selected"}</p>
+            <p className="message mt-3">
+              {files.length > 0 ? `${files[0].name}, ${files[0].size} bytes` : "No Files Selected"}
+            </p>
           </div>
         )}
       </div>
       <div className="dropzone-actions mt-4 d-flex justify-content-between">
-          <button type="reset" className="btn btn-secondary" onClick={handleReset}>
-            Cancel
-          </button>
-          <button type="submit" className="btn btn-primary">
-            Save
-          </button>
-        </div>
+        <button type="reset" className="btn btn-secondary" onClick={handleReset}>
+          Cancel
+        </button>
+        <button type="submit" className="btn btn-primary">
+          Save
+        </button>
+      </div>
     </form>
   );
 };

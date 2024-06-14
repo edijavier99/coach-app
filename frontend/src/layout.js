@@ -7,6 +7,8 @@ import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
 import { Login } from "./views/Login";
 import { Admin } from "./views/Admin";
+import { SingleArticle } from "./views/SingleArticle";
+
 // import { BackendURL } from "./component/backendURL";
 
 import injectContext from "./store/appContect";
@@ -31,7 +33,8 @@ const Layout = () => {
                         <Route element={<App />} path="/" />    
                         <Route element={<BookingView />} path="/appointment" /> 
                         <Route element={<Login />} path="/login" />               
-                        <Route element={<Blog />} path="/blog" />    
+                        <Route element={<Blog />} path="/blog" />  
+                        <Route element={<SingleArticle />} path="/article/:id" />
                         <Route element={<Admin />} path="/admin" />             
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
