@@ -1,0 +1,28 @@
+#blog-article header h1{
+    font-size: 45px;
+    font-weight: 800;
+}
+#blog-article header p{
+    font-size: 20px;
+}
+.article-image-container{
+    height: 450px;
+}
+.article-image-container img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+#blog-article main p {
+    font-size: 17px;
+}
+
+.first-letter{
+    font-size: 35px;
+}
+.fa-facebook, .fa-linkedin , .fa-copy{
+    font-size: 25px;
+    margin-right: 20px;
+    color: rgb(47, 158, 183);
+}

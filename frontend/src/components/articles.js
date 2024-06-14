@@ -43,7 +43,7 @@ const Articles = () => {
     {
       title: 'All Articles',
       content: (
-        <strong>This is the third item's accordion body.</strong>
+       <a href='/blog'>Click here to navigate to the blog section</a>
       ),
     },
   ];

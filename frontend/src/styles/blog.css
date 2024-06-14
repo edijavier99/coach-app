@@ -66,6 +66,16 @@
     object-fit: cover;
     border-radius: 20px;
   }
+  .card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Número de líneas a mostrar */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 3.6em; /* Ajustar según el tamaño del texto */
+    line-height: 1.8em; /* Doble del line-height normal para asegurar que se muestren dos líneas */
+  }
+  
   .card-footer {
     background-color:white;
 }

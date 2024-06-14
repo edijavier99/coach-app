@@ -32,8 +32,8 @@ const Sidebar = ({ items, user, onClickHandle }) => {
 
   return (
     <div className={`d-flex flex-column flex-shrink-0 p-3 text-white bg-dark sidebar`} style={{ minHeight: '100vh' }}>
-      <a href="#" className="mx-auto d-flex align-items-center mb-md-0 me-md-auto text-white text-decoration-none">
-        <span className="fs-4 sidebar-title">Dashboard</span>
+      <a href="/" className="mx-auto d-flex align-items-center mb-md-0 me-md-auto text-white text-decoration-none">
+        <span className="fs-4 sidebar-title">Home</span>
         <i className={`fas fa-bars fs-4 sidebar-title-icon`} />
       </a>
       <hr />
