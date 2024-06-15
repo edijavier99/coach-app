@@ -30,7 +30,7 @@
   
   .accordion-title-button:hover,
   .accordion-title-button.active {
-    background-color: #4c8dcf;
+    background-color: white;
   }
   
   .accordion-contents {

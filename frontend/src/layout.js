@@ -11,7 +11,7 @@ import { SingleArticle } from "./views/SingleArticle";
 
 // import { BackendURL } from "./component/backendURL";
 
-import injectContext from "./store/appContect";
+import injectContext from "./store/appContext";
 import App from "./views/Home";
 //create your first component
 

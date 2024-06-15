@@ -90,18 +90,11 @@ const CreateArticle = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Article Title:", article.article_title);
-    console.log("Article Subtitle:", article.article_subtitle);
-    console.log("Article Description:", article.article_description);
-    console.log("Article Category:", article.article_category);
-
     let article_image_url = '';
-
     if (files.length > 0) {
       try {
         const file = files[0];
         article_image_url = await uploadToCloudinary(file);
-        console.log("Image URL:", article_image_url);
       } catch (error) {
         console.error("Error uploading image:", error);
         return;
@@ -109,7 +102,6 @@ const CreateArticle = () => {
     }
 
     const currentDate = new Date().toISOString().split('T')[0];  // Formato YYYY-MM-DD
-
     const articleData = {
       ...article,
       article_image_url,
@@ -127,8 +119,7 @@ const CreateArticle = () => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Article saved successfully:", data);
-        handleReset(); // Reset form after successful submission
+        handleReset(); 
       } else {
         console.error("Error saving article:", response.statusText);
       }

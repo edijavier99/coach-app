@@ -5,28 +5,11 @@ import { useNavigate } from "react-router-dom";
 export const Blog = () => {
   const [allArticles, setAllArticles] = useState([]);
   const navigate = useNavigate()
+  const [selectedCategory, setSelectedCategory] = useState()
 
   useEffect(() => {
-    fetchAllArticles();
+    showArticlesByCategory()
   }, []);
-
-  const fetchAllArticles = () => {
-    const apiUrl = "http://127.0.0.1:8000/myapp/api/articles/";
-    fetch(apiUrl)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        setAllArticles(data);
-      })
-      .catch((err) => {
-        console.error("Error fetching articles:", err);
-      });
-  };
 
   const showArticles = () => {
     return allArticles.map((item, index) => {
@@ -66,6 +49,42 @@ export const Blog = () => {
     });
   };
 
+  const showArticlesByCategory = (category) =>{
+    let apiUrl = ""
+    if(category){
+      apiUrl =`http://127.0.0.1:8000/myapp/api/articles?category=${category}`
+      setSelectedCategory(category)
+    }else{
+      apiUrl =`http://127.0.0.1:8000/myapp/api/articles`
+      setSelectedCategory(null)
+    }
+    fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+        setAllArticles(data);
+    })
+    .catch(error => console.error('Error fetching articles:', error));
+  }
+
+  const ArticleCard = (props)=>{
+    return(
+      <>
+      <span onClick={()=>{
+        showArticlesByCategory()
+      }} className={`badge category d-flex align-items-center p-1 pe-2 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill ${selectedCategory === null ? "selected" : " "}`}>
+      <img
+        className="rounded-circle me-1"
+        height="24"
+        src="https://github.com/mdo.png"
+        alt=""
+      />
+      <span className="badge-text" >All Articles</span>
+    </span>
+    </>
+    )
+  }
+    
+
   return (
     <>
       <section className="blog col-md-10 mx-auto mt-5" id="blog">
@@ -91,34 +110,42 @@ export const Blog = () => {
               </form>
             </div>
             <div className="col-12 col-md-7 d-flex">
-              <span className="badge category d-flex align-items-center p-1 pe-2 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill">
+              <span onClick={()=>{
+                  showArticlesByCategory()
+                }} className={`badge category d-flex align-items-center p-1 pe-2 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill ${selectedCategory === null ? "selected" : " "}`}>
                 <img
                   className="rounded-circle me-1"
                   height="24"
                   src="https://github.com/mdo.png"
                   alt=""
                 />
-                <span className="badge-text">All Articles</span>
+                <span className="badge-text" >All Articles</span>
               </span>
-              <span className="badge category d-flex align-items-center p-1 pe-2 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill">
+              <span  onClick={()=>{
+                  showArticlesByCategory("fitness")
+                }} className={`badge category d-flex align-items-center p-1 pe-2 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill ${selectedCategory === "fitness" ? "selected" : " "}`}>
                 <img
                   className="rounded-circle me-1"
                   height="24"
                   src="https://github.com/mdo.png"
                   alt=""
                 />
-                <span className="badge-text">Fitness</span>
+                <span className="badge-text" >Fitness</span>
               </span>
-              <span className="badge category d-flex align-items-center p-1 pe-2 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill">
+              <span onClick={()=>{
+                  showArticlesByCategory("health")
+                }} className={`badge category d-flex align-items-center p-1 pe-2 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill ${selectedCategory === "health" ? "selected" : " "}`}>
                 <img
                   className="rounded-circle me-1"
                   height="24"
                   src="https://github.com/mdo.png"
                   alt=""
                 />
-                <span className="badge-text">Health</span>
+                <span className="badge-text" >Health</span>
               </span>
-              <span className="badge category d-flex align-items-center p-1 pe-2 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill">
+              <span  onClick={()=>{
+                  showArticlesByCategory("mindset")
+                }} className={`badge category d-flex align-items-center p-1 pe-2 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill ${selectedCategory === "mindset" ? "selected" : " "}`}>
                 <img
                   className="rounded-circle me-1"
                   height="24"
@@ -127,14 +154,16 @@ export const Blog = () => {
                 />
                 <span className="badge-text">Mindset</span>
               </span>
-              <span className="badge category d-flex align-items-center p-1 pe-2 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill">
+              <span onClick={()=>{
+                  showArticlesByCategory("nutrition")
+                }} className={`badge category d-flex align-items-center p-1 pe-2 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill ${selectedCategory === "nutrition" ? "selected" : " "}`}>
                 <img
                   className="rounded-circle me-1"
                   height="24"
                   src="https://github.com/mdo.png"
                   alt=""
                 />
-                <span className="badge-text">Nutrition</span>
+                <span className="badge-text" >Nutrition</span>
               </span>
             </div>
           </div>

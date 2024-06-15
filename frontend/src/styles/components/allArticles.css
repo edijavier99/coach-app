@@ -1,0 +1,11 @@
+#admin_article_list{
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.fa-trash{
+    color: rgb(202, 7, 7);
+}
