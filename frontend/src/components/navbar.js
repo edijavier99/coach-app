@@ -1,14 +1,23 @@
 import React from "react";
 import "../styles/navbar.css";
-import Logo from "../img/logo.jpg"
-export const Navbar = (props) => {
-  const items = props.items.map((item, index) => (
-    <li className="nav-item mx-3" key={index}>
-      <a className={`nav-link ${item.label.toLowerCase().replace(/\s+/g, '-')}`} href={item.url}>
-        {item.label}
-      </a>
-    </li>
-  ));
+import Logo from "../img/logo.jpg";
+
+export const Navbar = ({items}) => {
+
+  const accessToken = localStorage.getItem("access_token")
+
+  const navItems = items.map((item, index) => {
+    // Determina la URL dependiendo del estado de accessToken
+    const url = item.label === 'Login' && accessToken ? '/admin' : item.url;
+
+    return (
+      <li className="nav-item mx-3" key={index}>
+        <a className={`nav-link ${item.label.toLowerCase().replace(/\s+/g, '-')}`} href={url}>
+          {item.label === 'Login' && accessToken ? "Admin" : item.label}
+        </a>
+      </li>
+    );
+  });
 
   return (
     <nav className="navbar navbar-expand-lg bg-dark">
@@ -17,8 +26,9 @@ export const Navbar = (props) => {
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul className="navbar-nav mr-auto">{items}</ul>
+        <ul className="navbar-nav mr-auto">{navItems}</ul>
       </div>
     </nav>
   );
 };
+

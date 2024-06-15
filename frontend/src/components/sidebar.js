@@ -49,6 +49,8 @@ const Sidebar = ({ items, user, onClickHandle }) => {
 };
 
 export const SidebarAdmin = ({ onClickHandle }) => {
+  const username = localStorage.getItem("user_name")
+
   const items = [
     {  href: '/', text: 'Home', icon: 'fas fa-home' },
     {  href: '#', text: 'Articles', icon: 'fas fa-clipboard-list' },
@@ -57,7 +59,7 @@ export const SidebarAdmin = ({ onClickHandle }) => {
   ];
 
   const user = {
-    name: 'mdo',
+    name: username,
     image: 'https://github.com/mdo.png',
   };
 

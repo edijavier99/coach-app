@@ -1,253 +1,96 @@
-import React, { useState,useContext } from "react";
+import React, { useState } from "react";
 import "../styles/login.css";
 import { useNavigate } from "react-router-dom";
-// import { Context} from "../store/appContext";
 
-export const Login = () =>{
-    // const {store,actions} = useContext(Context)
-    const [loginEmail,setLoginEmail] = useState("")
-    const [loginPassword, setLoginPassword] = useState("")
-    const navigate = useNavigate()
-    const [showLogin, setShowLogin] = useState(true);
-    const [email,setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [username,setUsername] = useState("") 
+export const Login = () => {
+
+    const [loginForm, setLoginForm] = useState({
+        loginEmail: "",
+        loginPassword: ""
+    });
+    const [errMessage, setErrorMessage] = useState()
+
+    const navigate = useNavigate();
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setLoginForm({
+            ...loginForm,
+            [name]: value
+        });
+    };
+
+    const handleReset = () => {
+        setLoginForm({
+            loginEmail: "",
+            loginPassword: ""
+        });
+    };
+
+    const handleSubtmit = async (e) => {
+        e.preventDefault();
+        const apiUrl = `${process.env.REACT_APP_BACKEND_URL}api/login`;
+        
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    user_email: loginForm.loginEmail,
+                    user_password: loginForm.loginPassword
+                })
+            });
+    
+            if (response.ok) {
+                const data = await response.json();
+                console.log(data);
+                handleReset();
+                localStorage.setItem("access_token", data.access_token)
+                if(data.access_token){
+                    navigate('/admin'); // Navegar a la página principal después del login exitoso
+                }
+            } else {
+                throw new Error('Failed to login'); // Forzar un error para mostrar el mensaje de error
+            }
+    
+        } catch (error) {
+            console.error("Error login: ", error);
+            setErrorMessage(error.message); // Establecer el mensaje de error en el estado
+        }
+    };
     
 
-    const handleLoginClick = () => {
-        setShowLogin(true);
-    };
+    return (
+        <section className="row col-5 mx-auto">
+            <div className="col-12">
+                <form id="login-form" onSubmit={handleSubtmit}>
+                    <img className="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57" />
+                    <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
 
-    const handleCreateClick = () => {
-        setShowLogin(false);
-    };
-
-    const handleEmailBlur = (e) => {
-        const newEmail = e.target.value;
-        setEmail(newEmail);
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(newEmail)) {
-            // Swal.fire({
-            //     icon: 'error',
-            //     title: 'oppss...',
-            //     text: 'Please, insert a valid E-mail'            
-            // });
-          }
-        };
-
-        // const create_user = () =>{
-        //     if(email === '') {
-        //         alert(' Email is Empty!')
-        //     } else if(password === ''){
-        //         alert('Password is empty!')
-        //     } else if ( username === " "){
-        //         alert("Username empty")
-        //     } else {
-        //         fetch(process.env.BACKEND_URL + 'api/create-user', { 
-        //         method: "POST", 
-        //         headers: { 
-        //             "Content-Type": "application/json",
-        //         },
-        //         body: JSON.stringify({ email, password, username, image }) 
-        //     })
-        //     .then((res) => res.json())
-        //         // Swal.fire({
-        //         //     title: 'Check your email for confirmation',
-        //         //     text: 'You have been redirected to the Log In page.',
-        //         //     icon: 'info'
-        //         // })
-        //     .then((result) => {                
-        //         if (result.redirect) {                    
-        //             navigate(result.redirect);                   
-        //         } else {
-        //             console.log(result);
-        //         }
-        //     })
-        //     .catch((err) => {
-        //     console.log(err);
-        //     })
-        //     }
-        // }
-
-    // const user_login = () =>{
-	// 		if(loginEmail ==='') {
-	// 			alert(' Email is Empty!')
-	// 		} else if(loginPassword === ''){
-	// 			alert('Password is empty!')
-	// 		} else {
-	// 			fetch( process.env.BACKEND_URL + `api/login`, { 
-	// 			method: "POST",
-	// 			headers: { 
-	// 				"Content-Type": "application/json",
-	// 			},
-	// 			body: JSON.stringify({loginEmail,loginPassword }) 
-	// 		})
-	// 		.then((res) => res.json())
-	// 		.then((result) => {
-    //             if (result.msg) {
-    //                 // Swal.fire({
-    //                 //     icon: 'error',
-    //                 //     title: 'Oops...',
-    //                 //     text: result.msg,
-    //                 // });
-    //             } else {
-    //                 if (result.email_verified == true) {
-    //                     // Email is verified, proceed with login
-    //                     // Swal.fire({
-    //                     //     icon: 'success',
-    //                     //     text: result.loginOK,
-    //                     // });
-    //                     localStorage.setItem('jwt-token', result.token);
-    //                     localStorage.setItem('userId', result.user_id);
-    //                     actions.addUsername(result.username);
-    //                     localStorage.setItem('username', result.username);
-    //                     actions.getUser(localStorage.getItem('userId'));
-    //                     navigate('/');
-    //                 } else {
-    //                     // Email is not verified, show an error message or take appropriate action
-    //                     Swal.fire({
-    //                         icon: 'error',
-    //                         title: 'Email Not Verified',
-    //                         text: 'Please verify your email before logging in.',
-    //                     });                        
-    //                 }
-    //             }
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         });
-    //     };
-    // }
-    return(
-            <div className="general-container">
-            <div className="row" id="loginCard">
-                <div className={showLogin ? "col-md-6" : "col-md-6 order-md-2"}>
-                    {showLogin ? (
-                        <div className="half-content">
-                            <img
-                                src="https://images.unsplash.com/photo-1576678927484-cc907957088c?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                alt=" Login image"
-                                className="img-fluid"
-                            />
-                        </div>
-                    ) : (
-                        <div className="half-content ">
-                            <img
-                                // src={createUser}
-                                alt="Create Account image"
-                                className="img-fluid"
-                            />
-                        </div>
-                    )}
-                </div>
-                <div className={showLogin ? "col-md-6" : "col-md-6 order-md-1"}>
-                    <div className="d-flex flex-column justify-content-center align-items-center">
-                      
-                        <div className="row g-0 d-flex justify-content-center align-items-center mt-4">
-                            {showLogin ? (
-                                <>
-                                <div class="col-md-12 d-flex justify-content-center align-items-center flex-column" id="login">
-                                <h3 className="mb-5">TRUST MY WORD</h3>
-                                <div className="input-board">
-                                    <i class="fa-solid fa-user me-3"></i>
-                                    <input
-                                        type="text" 
-                                        id="email" 
-                                        className="p-3 col-10 login-input" 
-                                        placeholder="Email" 
-                                        name="email"
-                                        value={loginEmail}
-                                        onChange={(e)=>{setLoginEmail(e.target.value)}}
-                                        /><br/><br/>
-                                </div>
-                                <div className="input-board mt-3">
-                                    <i class="fa-solid fa-key me-3"></i>
-                                    <input
-                                        type="password" 
-                                        id="password" 
-                                        className="p-3 col-10 login-input"  
-                                        placeholder="Password" 
-                                        name="password"
-                                        value={loginPassword}
-                                        onChange={(e)=>{
-                                            setLoginPassword(e.target.value)
-                                        }}
-                                        /><br/><br/>
-                                </div>
-                                <button type="submit" className="btn btn-warning mt-4" 
-                                onClick={()=>{
-                                    // user_login()
-                                }}>Login</button>
-                                <div className="d-flex flex-row mt-3">
-                                    <a href="/" className="me-5 text-muted"><small>Forgot password?</small></a>
-                                    <a onClick={handleCreateClick} id="createAcount" className="me-5 text-muted"><small>Create Account</small></a>
-                                </div>
-                                <br/>
-                            </div>
-                            </>
-                                
-                            ) : (
-                                <>
-                                <div class="row g-0 d-flex justify-content-center align-items-center">
-                                    <div class="col-md-10 d-flex justify-content-center align-items-center flex-column ">
-                                        <h1 className="mb-3">CREATE ACCOUNT</h1>
-                                        <p className="text-center">Create an account to join our comunity and share your experiences</p>
-                                        <div className="input-board">
-                                            <i class="fa-solid fa-user me-3"></i>
-                                            <input 
-                                                type="text" 
-                                                id="username" 
-                                                className="p-3 col-10 register-input" 
-                                                placeholder="Username" 
-                                                name="username"
-                                                value={username}
-                                                onChange={(e)=>{setUsername(e.target.value)}}
-                                                /><br/><br/>
-                                        </div>
-                                        <div className="input-board mt-3">
-                                            <i class="fa-solid fa-at me-3"></i>
-                                            <input 
-                                                type="text" 
-                                                id="email" 
-                                                className="p-3 col-10 register-input"  
-                                                placeholder="Email" 
-                                                name="email"
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
-                                                onBlur={handleEmailBlur}
-                                                /><br/><br/>
-                                        </div>
-                                        <div className="input-board mt-3">
-                                            <i class="fa-solid fa-key me-3"></i>
-                                            <input 
-                                                type="password" 
-                                                id="password" 
-                                                className="p-3 col-10 register-input"  
-                                                placeholder="Password" 
-                                                name="password"
-                                                value={password}
-                                                onChange={(e)=>{setPassword(e.target.value)}}
-                                                /><br/><br/>
-                                        </div>
-                                        <div id="btn-container-login" className="d-flex flex-row ">
-                                            <button 
-                                                type="submit" 
-                                                className="btn btn-warning mt-4" 
-                                                onClick={()=>{ 
-                                                    // create_user()
-                                                    handleLoginClick()
-                                                }}
-                                            >SUBMIT</button>
-                                        </div>
-                                    </div>
-                                </div>     
-                                </>
-                            )}
-                        </div>
+                    <div className="form-floating mb-3">
+                        <input type="email" className="form-control" id="floatingInput" required onChange={handleInputChange} name="loginEmail" value={loginForm.loginEmail} placeholder="name@example.com" />
+                        <label htmlFor="floatingInput">Email address</label>
                     </div>
-                </div>
-            </div>
-        </div>
-    )
-}
+                    <div className="form-floating">
+                        <input type="password" className="form-control" id="floatingPassword" required onChange={handleInputChange} name="loginPassword" value={loginForm.loginPassword} placeholder="Password" />
+                        <label htmlFor="floatingPassword">Password</label>
+                    </div>
 
+                    <div className="form-check text-start my-3">
+                        <input className="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault" />
+                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                            Remember me
+                        </label>
+                    </div>
+                    <button className="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+                    <p className="mt-5 mb-3 text-body-secondary">© 2017–2024</p>
+                </form>
+            </div>
+            <div className={`alert alert-danger ${errMessage ? 'd-block' : 'd-none'}`} role="alert">
+                {errMessage}
+            </div>
+        </section>
+    );
+};

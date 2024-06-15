@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.hashers import make_password, check_password
+
 
 # Create your models here.
 class Article(models.Model):
@@ -22,7 +24,22 @@ class Article(models.Model):
 class User(models.Model):
     user_name = models.CharField(max_length=100)
     user_surname = models.CharField(max_length=100)
-    user_email = models.EmailField()
+    user_email = models.EmailField(unique=True)
+    user_password = models.CharField(max_length=255, default='')
 
     def __str__(self):
         return self.user_email
+
+    def set_password(self, raw_password):
+        self.user_password = make_password(raw_password)
+
+    def check_password(self, raw_password):
+        return check_password(raw_password, self.user_password)
+    
+class Client(models.Model):
+    client_name = models.CharField(max_length=100)
+    client_surname = models.CharField(max_length=100)
+    client_email = models.EmailField()
+
+    def __str__(self):
+        return self.client_email

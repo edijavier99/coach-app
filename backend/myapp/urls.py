@@ -6,5 +6,7 @@ urlpatterns = [
     path('api/articles/create/', views.article_create, name='article-create'),
     path('api/article/<int:id>',views.single_article, name="single-article" ),
     path('api/article/delete/<int:id>', views.delete_article, name="delete-article"),
-    path('api/user/create', views.create_user, name="create-user")
+    path('api/user/create', views.create_user, name="create-user"),
+    path('api/login', views.login_user, name="login-user")
+
 ]

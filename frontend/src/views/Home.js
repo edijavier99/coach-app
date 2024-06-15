@@ -11,12 +11,20 @@ import { Prices } from "../components/prices";
 import { Reviews } from "../components/reviews";
 
 function Home() {
+  const menu = [
+    { label: "Home", url: "/" },
+    { label: "My History", url: "/about-me" },
+    { label: "Blog", url: "/blog" },
+    { label: "Login", url: "/login"},
+    { label : "Booking", url: "/appointment"}
+];
   const dietDescription = "Get personalized diet plans tailored to your nutritional needs. Our experts will create a customized diet plan based on your dietary preferences, health goals, and lifestyle.";
   const routinesDescription = "Discover personalized workout routines designed to help you achieve your fitness goals. Our fitness experts will create a tailored exercise plan that suits your fitness level, preferences, and objectives.";
   const mindHealthDescription = "Experience treatments focused on improving mental health and well-being. Our mental health professionals offer a range of therapies and techniques to help you manage stress, anxiety, and other mental health challenges.";
    
   return (
     <section>
+      <Navbar items={menu}  />
       <PopupWidget
         url="https://calendly.com/edijavier10"
         rootElement={document.getElementById("root")}
