@@ -18,3 +18,11 @@ class Article(models.Model):
 
     def __str__(self):
         return self.article_title
+
+class User(models.Model):
+    user_name = models.CharField(max_length=100)
+    user_surname = models.CharField(max_length=100)
+    user_email = models.EmailField()
+
+    def __str__(self):
+        return self.user_email
