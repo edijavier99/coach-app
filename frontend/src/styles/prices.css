@@ -11,10 +11,13 @@
     padding: 30px 30px 50px;
     /* background: linear-gradient(rgb(174, 221, 248), rgb(0, 162, 255)); */
     font-size: 125%;
-    transition: background-color 0.3s ease;
+    background-color:  rgb(0, 162, 255);
+    transition: color 0.3s ease;
+  }
+  .first-card, .third-card{
+    background-color:  rgb(122, 206, 255);
   }
   .card:hover{
-    background-color:  rgb(0, 162, 255);
     color: white !important;
   }
   .plan-title{
@@ -96,7 +99,7 @@
   }
   
   .card var {
-    color: #4087ed;
+    color:white;
     font-weight: 400;
     font-size: 50px;
     font-style: normal;
@@ -117,11 +120,11 @@
     display: flex;
     gap: 10px;
     align-items: center;
-    padding: 6px 0;
+    padding: 4px 0;
   }
   
   ul li img {
-    width: 16px;
+    width: 46px;
   }
   
   .card button {

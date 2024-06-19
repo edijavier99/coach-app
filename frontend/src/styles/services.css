@@ -1,47 +1,75 @@
-
+#services{
+    margin-top: 40px;
+}
 #services h3 {
     font-weight: 900;
     font-size: 40px;
     text-align: center;
+    margin-bottom: 30px;
 }
-.service-card{
+
+.service-card {
     display: flex;
     align-items: center;
     flex-direction: column;
-    transition: transform 0.3s ease; /* Agregar una transición suave */
+    transition: transform 0.3s ease;
+    margin-bottom: 30px;
+}
 
+.card-number-img {
+    height: 200px;
 }
-.card-number-img{
-    height:200px;
-}
+
+
 .service-body {
     padding: 20px;
     text-align: center;
     min-height: 250px;
-    border-top: 1px solid transparent; /* Establecer un borde superior transparente */
-    border-bottom: none; /* Eliminar el borde inferior */
+    border-top: 1px solid transparent;
+    border-bottom: none;
     background-color: rgb(246, 243, 243);
     border-radius: 20px;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    transition: background-color 0.3s ease; /* Agregar una transición suave */
+    transition: background-color 0.3s ease;
 }
-.service-card:hover{
-    transform: scale(1.10); /* Escalar el elemento al 105% en hover */
+
+.service-card:hover {
+    transform: scale(1.10);
 }
-.service-body:hover{
+
+.service-body:hover {
     background-color: rgb(227, 226, 226);
 }
-.service-body h2{
+
+.service-body h2 {
     font-weight: 750;
 }
-.fa-dumbbell, .fa-brain, .fa-heart-circle-check{
+
+.fa-dumbbell, .fa-brain, .fa-heart-circle-check {
     font-size: 25px;
 }
 
-.service-card-link{
+.service-card-link {
     color: black !important;
     text-decoration: none;
+}
+
+@media (max-width: 1200px) {
+    .service-body {
+        min-height: 320px;
+    }
+}
+
+@media (max-width: 768px) {
+    
+    .service-card {
+        margin-bottom: 20px;
+    }
+
+    .service-body {
+        min-height: auto;
+    }
 }

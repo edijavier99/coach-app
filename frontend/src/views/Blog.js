@@ -36,7 +36,7 @@ export const Blog = () => {
             <h5 className="card-title">{item.article_title}</h5>
             <p className="card-text">{item.article_description}</p>
             <a href="#" onClick={()=>{
-              navigate(`/article/${item.id}`)
+              navigate(`blog/article/${item.id}`)
             }}  className="booking mt-3">
               Learn More
             </a>

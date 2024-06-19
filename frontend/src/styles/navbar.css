@@ -27,11 +27,11 @@ nav {
     background-color: transparent;
     transition: width 0.5s ease;
 }
-.nav-item:hover::after { 
+/* .nav-item:hover::after { 
     width: 100%;
     background: linear-gradient(rgb(92, 212, 138),  rgb(0, 162, 255))
 
-}
+} */
 .navbar-brand {
     height: 70px;
     margin-left: 30px;

@@ -24,7 +24,7 @@
     transition: filter 0.3s;
     border-radius: 20px;
 }
-input{
+#login-form input{
     height: 40px;
     width: 220px;
     border: none;

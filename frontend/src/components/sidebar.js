@@ -9,7 +9,7 @@ const SidebarItem = ({ text, onClick, icon }) => (
       </a>
     </li>
   );
-  
+ 
 const Dropdown = ({ user }) => (
   <div className="dropdown">
     <a href="#" className="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">

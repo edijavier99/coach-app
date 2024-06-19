@@ -51,7 +51,7 @@ export const AllArticles = () => {
     }
 
     const handleEyeClick = (id) => {
-        navigate(`/article/${id}`);
+        navigate(`/blog/article/${id}`);
     }
 
     const handlePenClick = (item_id) => {
