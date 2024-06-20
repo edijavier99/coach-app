@@ -1,0 +1,39 @@
+
+.full-width {
+    width: 100%;
+    border-radius: 20px !important;
+    background-color: rgb(209, 209, 209) !important;
+    grid-column: 1 / -1; /* Hace que el elemento ocupe todas las columnas del grid */
+}
+
+#userProfile {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#userProfile h2 {
+    color: #333;
+}
+
+#userProfile p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+#userProfile h6 {
+    font-size: 1.2em;
+    margin-top: 20px;
+    color: #555;
+}
+
+#userProfile textarea {
+    width: 100%;
+    height: 100px;
+    resize: none;
+}
+
+#userProfile button {
+    margin-top: 10px;
+}
