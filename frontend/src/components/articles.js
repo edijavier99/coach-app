@@ -19,7 +19,6 @@ const AccordionItem = ({ index, title, activeIndex, setActiveIndex }) => {
 
 const Articles = () => {
     const [activeIndex, setActiveIndex] = useState(0);
-    const [activeComponent, setActiveComponent] = useState(null);
 
     const items = [
         {
@@ -31,7 +30,7 @@ const Articles = () => {
         {
             title: 'All Articles',
             content: (
-                <AllArticles active={activeIndex === 1} />
+                <AllArticles active={activeIndex === 1} onClickReload={() => window.location.reload()} /> // Pasa la función para recargar la página
             ),
         },
     ];
@@ -40,7 +39,7 @@ const Articles = () => {
         <section id='admin-article' className='container-fluid'>
             <header className='aa-header row col-11 mx-auto my-3 p-4'>
                 <h1>Articles Section</h1>
-                <p>this section you can add, delete, edit and create articles that is going to be posted on the blog</p>
+                <p>This section allows you to add, delete, edit, and create articles that will be posted on the blog.</p>
             </header>
 
             <main className='aa-main row col-11 mx-auto'>
@@ -53,7 +52,6 @@ const Articles = () => {
                                 title={item.title}
                                 activeIndex={activeIndex}
                                 setActiveIndex={setActiveIndex}
-                                setActiveComponent={setActiveComponent}
                             />
                         ))}
                     </div>

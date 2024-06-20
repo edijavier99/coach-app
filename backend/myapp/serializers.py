@@ -14,5 +14,5 @@ class UserSerializer(serializers.ModelSerializer):
 
 class ClientSerializer(serializers.ModelSerializer):
     class Meta:
-        model : Client
+        model = Client
         fields = '__all__'

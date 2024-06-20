@@ -2,33 +2,22 @@ import React, { useContext, useEffect, useState, useRef } from "react";
 import { Context } from '../store/appContext';
 import "../styles/components/allArticles.css";
 import { useNavigate } from "react-router-dom";
+import { useGetFetch } from "../hooks/get";
 
 export const AllArticles = () => {
-
     const { actions, store } = useContext(Context);
     const [articlesList, setArticlesList] = useState([]);
     const navigate = useNavigate();
     const [articleToDelete, setArticleToDelete] = useState();
-    const actionsRef = useRef(actions);
-    
-    useEffect(() => {
-        actionsRef.current = actions;
-    }, [actions]);
-
-    useEffect(() => {
-        if (actionsRef.current && actionsRef.current.fetchAllArticles) {
-            actionsRef.current.fetchAllArticles();
-        } else {
-            console.error("fetchAllArticles is not defined");
-        }
-    }, []);
-
-    useEffect(() => {
-        if (store.allArticles && store.allArticles.length > 0) {
-            setArticlesList(store.allArticles);
-        }
-    }, [store.allArticles]);
-
+    const { data: articles, loading, error } = useGetFetch(`${process.env.REACT_APP_BACKEND_URL}api/articles`);
+  
+  useEffect(() => {
+    console.log("averrr");
+    if (!loading && !error) {
+        setArticlesList(articles);
+    }
+  }, [articles, loading, error]);
+                
     const deleteArticle = () => {
         const apiUrl = `${process.env.REACT_APP_BACKEND_URL}api/article/delete/${articleToDelete}`;
         fetch(apiUrl, {

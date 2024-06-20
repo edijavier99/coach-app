@@ -69,6 +69,7 @@ function Home() {
       <Prices/>
       <Reviews/>
       <Newsletter />
+      <Footer/>
     </section>
   );
 }

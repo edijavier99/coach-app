@@ -10,9 +10,12 @@
     text-align: center; 
     height: 80px;   
     border-radius: 20px; 
-    background-color: black;
+    background: rgb(0, 162, 255);
     color: white;
     transform: translateY(-50%);
+}
+#introduction header span {
+    font-weight: 900;
 }
 .profile-info {
     background-color: rgb(246, 243, 243);

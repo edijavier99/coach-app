@@ -1,0 +1,26 @@
+#client-card {
+    background-color: rgb(209, 209, 209);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+/* Grid layout for desktop */
+.clients-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Grid layout for tablets (between 768px and 1024px) */
+@media (max-width: 1024px) {
+    .clients-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Grid layout for mobile devices (less than 768px) */
+@media (max-width: 768px) {
+    .clients-grid {
+        grid-template-columns: 1fr;
+    }
+}

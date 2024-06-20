@@ -6,7 +6,7 @@ export const Prices = () => {
   return (
     <section className="d-flex align-items-center flex-column my-5" id="prices">
       <h4 className="plan-title my-4">Choose Your Path to Success Today</h4>
-      <p className="plan-description mb-4">
+      <p className="plan-description mb-4 lead">
         Discover our tailored coaching sessions designed to elevate your mindset, fitness, and health. Book your first session for free and experience a personalized introduction to our transformative services. Let's embark on this journey together to achieve your goals and unlock your full potential.
       </p>
       <div className="grid col-11">

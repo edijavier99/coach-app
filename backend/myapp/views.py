@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from django.contrib.auth.hashers import check_password
 
 from rest_framework import status
-from .models import Article,User
+from .models import Article,User, Client
 from .serializers import ArticleSerializer, UserSerializer,ClientSerializer
 from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
@@ -26,7 +26,7 @@ def article_list(request):
         return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def article_create(request):
     serializer = ArticleSerializer(data=request.data)
     if serializer.is_valid():
@@ -113,3 +113,16 @@ def login_user(request):
         'refresh_token': str(refresh),
         'user': serializer.data  # Incluir datos del usuario en la respuesta si es necesario
     }, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def all_clients(request):
+    try:
+        client  = Client.objects.all()
+        serializer = ClientSerializer(client, many = True)
+        return Response(serializer.data, status= status.HTTP_200_OK)
+    except Article.DoesNotExist:
+        return Response({"error", "Clients not found"}, status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+

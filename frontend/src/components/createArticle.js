@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/createArticle.css";
 
 const CreateArticle = () => {
+  const token = localStorage.getItem("access_token")
   const cloudName = 'dhyrv5g3w';
   const uploadPreset = 'ptwmh2mt';
   const [article, setArticle] = useState({
@@ -88,6 +89,8 @@ const CreateArticle = () => {
     }
   };
 
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     let article_image_url = '';
@@ -112,7 +115,7 @@ const CreateArticle = () => {
       const response = await fetch('http://127.0.0.1:8000/myapp/api/articles/create/', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(articleData)
       });
@@ -189,6 +192,7 @@ const CreateArticle = () => {
         </select>
       </div>
 
+
       <div
         className={`dropzone-area p-3 rounded ${imagePreview ? "has-image" : ""}`}
         onDragOver={handleDropzoneDrag}
@@ -241,6 +245,7 @@ const CreateArticle = () => {
         </button>
       </div>
     </form>
+
   );
 };
 
