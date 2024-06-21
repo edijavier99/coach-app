@@ -1,6 +1,7 @@
 import React, { useState, Suspense, useMemo } from 'react';
 import { SidebarAdmin } from '../components/sidebar';
 
+const LazyAppointments = React.lazy(()=> import('../components/appointments') )
 const LazyArticles = React.lazy(() => import('../components/articles'));
 const LazyClients = React.lazy(() => import('../components/clients'));
 
@@ -18,6 +19,8 @@ export const Admin = () => {
         return <LazyArticles />;
       case 'Clients':
         return <LazyClients />;
+      case 'Appointments':
+        return <LazyAppointments/>
       default:
         return null;
     }

@@ -4,6 +4,11 @@
     padding: 20px;
 }
 
+.cc-header{
+    border-radius: 20px;
+    background-color: rgb(209, 209, 209);
+}
+
 /* Grid layout for desktop */
 .clients-grid {
     display: grid;

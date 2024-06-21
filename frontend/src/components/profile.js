@@ -17,41 +17,72 @@ const Profile = ({ client, onBack }) => {
   };
 
   return (
-    <section id="userProfile" className="container mt-5 full-width">
+    <section id="userProfile" className="container my-5 full-width">
       <h2 className="mb-4">Profile Section</h2>
-      <p>This is the profile of <strong>{client.client_name} {client.client_surname}</strong></p>
-      <p>The email is <strong>{client.client_email}</strong></p>
-      
+      <div className='row'>
+        <div className="profile-row col-12 col-md-4 col-lg-4">
+          <label className="profile-label">Name</label>
+          <span className="profile-value">{client.client_name}</span>
+        </div>
+
+        <div className="profile-row col-12 col-md-4 col-lg-4">
+          <label className="profile-label">Surname</label>
+          <span className="profile-value">{client.client_surname}</span>
+        </div>
+
+        <div className="profile-row col-12 col-md-4 col-lg-4">
+          <label className="profile-label">Email</label>
+          <span className="profile-value">{client.client_email}</span>
+        </div>
+      </div>
       {isEditing ? (
         <>
-          <h6>General Description</h6>
-          <textarea 
-            className="form-control mb-3" 
-            value={description} 
-            onChange={(e) => setDescription(e.target.value)}
-          />
-          <h6>Objectives</h6>
-          <textarea 
-            className="form-control mb-3" 
-            value={objectives} 
-            onChange={(e) => setObjectives(e.target.value)}
-          />
-          <h6>Observations</h6>
-          <textarea 
-            className="form-control mb-3" 
-            value={observations} 
-            onChange={(e) => setObservations(e.target.value)}
-          />
+          <div className="profile-row">
+            <label className="profile-label">General Description</label>
+            <textarea 
+              className="form-control mb-3 profile-textarea" 
+              value={description} 
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+
+          <div className="profile-row">
+            <label className="profile-label">Objectives</label>
+            <textarea 
+              className="form-control mb-3 profile-textarea" 
+              value={objectives} 
+              onChange={(e) => setObjectives(e.target.value)}
+            />
+          </div>
+
+          <div className="profile-row">
+            <label className="profile-label">Observations</label>
+            <textarea 
+              className="form-control mb-3 profile-textarea" 
+              value={observations} 
+              onChange={(e) => setObservations(e.target.value)}
+            />
+          </div>
+
           <button onClick={handleSave} className="btn btn-success">Save</button>
         </>
       ) : (
         <>
-          <h6>General Description</h6>
-          <p>{description || "No description available"}</p>
-          <h6>Objectives</h6>
-          <p>{objectives || "No objectives available"}</p>
-          <h6>Observations</h6>
-          <p>{observations || "No observations available"}</p>
+          <div className="profile-row">
+            <label className="profile-label">General Description</label>
+            <p className="profile-value">{description || "No description available"}</p>
+          </div>
+
+          <div className="profile-row">
+            <label className="profile-label">Objectives</label>
+            <p className="profile-value">{objectives || "No objectives available"}</p>
+          </div>
+
+          <div className="profile-row">
+            <label className="profile-label">Observations</label>
+            <p className="profile-value">{observations || "No observations available"}</p>
+          </div>
+
           <button onClick={handleEdit} className="btn btn-warning">Edit</button>
         </>
       )}

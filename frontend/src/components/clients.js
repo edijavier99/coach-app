@@ -61,7 +61,7 @@ const Clients = () => {
 
   return (
     <section id='admin-article' className='container-fluid'>
-      <header className='aa-header row col-11 mx-auto my-3 p-4'>
+      <header className='cc-header row col-11 mx-auto my-3 p-4'>
         <h1>Clients Section</h1>
         <p>In this section you can see all the clients that you had and also see their personal file</p>
         <form className="d-flex mt-5 mx-auto" >
