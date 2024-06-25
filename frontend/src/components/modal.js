@@ -1,11 +1,7 @@
 import React from "react";
-import { AdminLoginForm } from "./forms/adminLoginForm";
 import { CheckForm } from "./forms/checkForm";
 
 export const CheckModal = ({ selectedForm }) => {
-
-  console.log(selectedForm);
-  // Determinar el ID y el data-bs-target dinámico según selectedForm
   const modalId = `checkModal-${selectedForm}`;
   const modalTarget = `#${modalId}`;
 

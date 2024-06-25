@@ -1,9 +1,16 @@
-import React from "react";
+import React , {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/hero.css"
 import { CheckForm } from "./forms/checkForm";
 
 export const Hero = () =>{
+    const [verified, setVerified] = useState(false)
+    useEffect(()=>{
+        const verified = localStorage.getItem("verified_user")
+        if(verified){
+            setVerified(true)
+        }
+    },[])
   const navigate = useNavigate()
     return(
       <section id="hero" className="carousel-container">
@@ -25,22 +32,34 @@ export const Hero = () =>{
                         </p>
                     </div>
 
-                    <button type="button" class="btn booking " data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Make  A Booking
-                    </button>
+                    {verified ? (
+                         <a className="btn booking" href="/process">
+                            Make A Booking
+                         </a>
+                        
+                    ) : (
+                        <a
+                            className="btn booking"
+                            data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"
+                            >
+                            Make A Booking
+                        </a>
+                    )}
 
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                    <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             <CheckForm/>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         </div>
                         </div>
                     </div>

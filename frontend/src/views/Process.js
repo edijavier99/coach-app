@@ -6,15 +6,15 @@ import { Steps, Panel, ButtonGroup, Button } from 'rsuite';
 import { InlineWidget } from "react-calendly";
 
 export const Process = () => {
+    const [verified, setVerified] = useState(false);
     const [step, setStep] = useState(0);
     const [autoProceed, setAutoProceed] = useState(false);
-    const [firstTimeUser, setFirstTimeUser] = useState(false); // Estado para controlar si es la primera vez del usuario
 
     useEffect(() => {
-        const welcomeFirstTime = localStorage.getItem("welcome_first_time");
-        if (welcomeFirstTime === "true") {
-            setFirstTimeUser(true);
-            localStorage.removeItem("welcome_first_time"); // Eliminar el flag para futuras visitas
+        const verified_user = localStorage.getItem("verified_user");
+        if (verified_user) {
+            setVerified(true); // Si hay un usuario verificado, establece el estado como true
+            setStep(1); // Avanza directamente al paso 2 si el usuario está verificado
         }
     }, []);
 
@@ -31,7 +31,7 @@ export const Process = () => {
     const renderStepComponent = () => {
         switch (step) {
             case 0:
-                return firstTimeUser === false ? <Welcome setAutoProceed={setAutoProceed} /> : null; // Mostrar Welcome si es la primera vez
+                return verified ? null :  <Welcome setAutoProceed={setAutoProceed} />; // Mostrar Welcome si es la primera vez
             case 1:
                 return <InlineWidget url="https://calendly.com/edijavier10" />;
             case 2:
@@ -57,7 +57,7 @@ export const Process = () => {
                         <Steps.Item title="Confirmation" />
                     </Steps>
 
-                    <Panel header={`Step: ${step + 1}`}>
+                    <Panel >
                         {renderStepComponent()}
                     </Panel>
 
@@ -78,3 +78,4 @@ export const Process = () => {
         </section>
     );
 };
+
