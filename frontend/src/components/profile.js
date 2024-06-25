@@ -83,11 +83,11 @@ const Profile = ({ client, onBack }) => {
             <p className="profile-value">{observations || "No observations available"}</p>
           </div>
 
-          <button onClick={handleEdit} className="btn btn-warning">Edit</button>
+          <button onClick={handleEdit} className="btn btn-warning profile-save">Edit</button>
         </>
       )}
       
-      <button onClick={onBack} className="btn btn-primary mt-3">Back to Clients</button>
+      <button onClick={onBack} className="btn btn-primary ms-3">Back to Clients</button>
     </section>
   );
 };

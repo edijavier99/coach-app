@@ -1,15 +1,9 @@
-.navbar-toggler {
+/* .navbar-toggler {
     margin-right: 25px;
 }
 nav {
     font-size: 18px;
-    margin: 0 auto;
-    position: sticky !important;
-    top: 0;
-    backdrop-filter: blur(10px); /* Aplica el efecto de desenfoque */
-    z-index: 99;
 }
-
 .nav-item {
     position: relative;
     transition: transform 0.3s ease; 
@@ -27,11 +21,7 @@ nav {
     background-color: transparent;
     transition: width 0.5s ease;
 }
-/* .nav-item:hover::after { 
-    width: 100%;
-    background: linear-gradient(rgb(92, 212, 138),  rgb(0, 162, 255))
 
-} */
 .navbar-brand {
     height: 70px;
     margin-left: 30px;
@@ -60,7 +50,7 @@ nav {
     color: #fff !important;
     cursor: pointer;
     text-decoration: none;
-    transition: transform 0.3s ease; /* Transición suave */
+    transition: transform 0.3s ease; 
 
 }
 .booking:hover{
@@ -85,4 +75,31 @@ nav {
         transition: width 0.1s ease;
     }
     
+} */
+
+
+
+
+
+.booking{
+    background: rgb(0, 162, 255);
+    color: rgb(255, 255, 255);
+    display: table-cell;
+    width: auto;
+    padding: 10px 50px !important;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 2px 5px;
+    font-family: sans-serif;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff !important;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.3s ease; 
+
+}
+.booking:hover{
+    transform: translateY(-5px);
 }

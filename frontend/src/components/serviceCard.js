@@ -4,6 +4,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Autoplay, Pagination, Mousewheel } from 'swiper/modules';
 import "../styles/eachCard.css";
+import  {CheckModal}  from './modal';
 
 export const ServiceCard = ({ title, category, delayTime, description, imgOne, imgTwo, imgThree, reverse, identification }) => {
     const cardLeftClass = reverse ? "sv-card-right col-md-6" : "sv-card-left col-md-6";
@@ -16,7 +17,7 @@ export const ServiceCard = ({ title, category, delayTime, description, imgOne, i
                     <h2 className='each-service-title'>{title}</h2>
                     <p className="text-muted">{category}</p>
                     <p className='each-service-description'>{description}</p>
-                    <a className="booking bookingHero mt-4" href="/appointment">Make A Booking</a>
+                    <CheckModal  selectedForm={category}/> 
                 </div>
                 <div className={cardRightClass}>
                     <Swiper
@@ -32,7 +33,7 @@ export const ServiceCard = ({ title, category, delayTime, description, imgOne, i
                         className="mySwiper"
                     >
                         <SwiperSlide>
-                            <img alt='' src={imgOne} />
+                            <img alt={`img-${category}`} src={imgOne} />
                         </SwiperSlide>
                         <SwiperSlide>
                             <img alt='' src={imgTwo} />

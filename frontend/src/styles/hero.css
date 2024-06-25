@@ -12,7 +12,6 @@
     right: 15%;
     top: 0px; 
     left: 15%;
-    z-index: 1;
     padding-top: 20px;
     padding-bottom: 20px;
     display: flex;
@@ -20,6 +19,7 @@
     justify-content: center;
     flex-direction: column;
 }
+
 .carousel-inner h2{
     margin-left: -30px;
     font-size: 70px;
@@ -41,22 +41,18 @@
     color: white;
     display: flex;
     align-items: center;
-    justify-content: center; /* Centro horizontalmente */
-    text-align: center; /* Centro el texto dentro del elemento */
+    justify-content: center; 
+    text-align: center; 
 }
 .slogan-description {
     font-size: 1.5rem;
     color: white;
-    text-align: center; /* Centro el texto dentro del elemento */
+    text-align: center; 
 }
 #slogan{
     border-radius: 20px;
     height: auto !important;
     margin-bottom: 60px;
-}
-.bookingHero{
-    display: flex;
-    align-items: center;
 }
 
 .carousel-dark .carousel-indicators [data-bs-target] {

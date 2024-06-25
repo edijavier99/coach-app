@@ -109,60 +109,30 @@ export const Blog = () => {
                 />
               </form>
             </div>
-            <div className="col-12 col-md-7 d-flex">
+            <div className="col-12 col-md-7 d-flex mt-3">
               <span onClick={()=>{
                   showArticlesByCategory()
                 }} className={`badge category d-flex align-items-center p-1 pe-2 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill ${selectedCategory === null ? "selected" : " "}`}>
-                <img
-                  className="rounded-circle me-1"
-                  height="24"
-                  src="https://github.com/mdo.png"
-                  alt=""
-                />
                 <span className="badge-text" >All Articles</span>
               </span>
               <span  onClick={()=>{
                   showArticlesByCategory("fitness")
                 }} className={`badge category d-flex align-items-center p-1 pe-2 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill ${selectedCategory === "fitness" ? "selected" : " "}`}>
-                <img
-                  className="rounded-circle me-1"
-                  height="24"
-                  src="https://github.com/mdo.png"
-                  alt=""
-                />
                 <span className="badge-text" >Fitness</span>
               </span>
               <span onClick={()=>{
                   showArticlesByCategory("health")
                 }} className={`badge category d-flex align-items-center p-1 pe-2 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill ${selectedCategory === "health" ? "selected" : " "}`}>
-                <img
-                  className="rounded-circle me-1"
-                  height="24"
-                  src="https://github.com/mdo.png"
-                  alt=""
-                />
                 <span className="badge-text" >Health</span>
               </span>
               <span  onClick={()=>{
                   showArticlesByCategory("mindset")
                 }} className={`badge category d-flex align-items-center p-1 pe-2 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill ${selectedCategory === "mindset" ? "selected" : " "}`}>
-                <img
-                  className="rounded-circle me-1"
-                  height="24"
-                  src="https://github.com/mdo.png"
-                  alt=""
-                />
                 <span className="badge-text">Mindset</span>
               </span>
               <span onClick={()=>{
                   showArticlesByCategory("nutrition")
                 }} className={`badge category d-flex align-items-center p-1 pe-2 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle rounded-pill ${selectedCategory === "nutrition" ? "selected" : " "}`}>
-                <img
-                  className="rounded-circle me-1"
-                  height="24"
-                  src="https://github.com/mdo.png"
-                  alt=""
-                />
                 <span className="badge-text" >Nutrition</span>
               </span>
             </div>

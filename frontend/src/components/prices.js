@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/prices.css"
-import checkSvg from "../assests/check.svg" // Asegúrate de ajustar la ruta al SVG
+import checkSvg from "../assests/check.svg"
+import { CheckModal } from "./modal";
 
 export const Prices = () => {
   return (
@@ -32,7 +33,7 @@ export const Prices = () => {
                 <p>Improving mental resilience</p>
               </li>
             </ul>
-            <button>Choose Plan</button>
+            <CheckModal/>
           </article>
         </div>
         <div className="primary">
@@ -61,6 +62,7 @@ export const Prices = () => {
                 <p>Injury prevention techniques</p>
               </li>
             </ul>
+            <CheckModal/>
             <button className="btn-primary">Choose Plan</button>
           </article>
         </div>
@@ -86,7 +88,7 @@ export const Prices = () => {
                 <p>Balanced diet planning</p>
               </li>
             </ul>
-            <button>Choose Plan</button>
+            <CheckModal/>
           </article>
         </div>
       </div>

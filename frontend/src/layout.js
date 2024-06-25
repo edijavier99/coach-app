@@ -3,18 +3,16 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import ScrollToTop from "./components/scrollToTop";
 import { BookingView } from "./views/booking";
 import { Blog } from "./views/Blog";
-import { Navbar } from "./components/navbar";
-import { Footer } from "./components/footer";
-import { Login } from "./views/Login";
 import { Admin } from "./views/Admin";
 import { SingleArticle } from "./views/SingleArticle";
 import Home from "./views/Home";
 import injectContext from "./store/appContext";
 import { Process } from "./views/Process";
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
+// import { Elements } from '@stripe/react-stripe-js';
+// import { loadStripe } from '@stripe/stripe-js';
+import { About } from "./views/About";
 
-const stripePromise = loadStripe('tu_clave_publica_de_stripe');
+// const stripePromise = loadStripe('tu_clave_publica_de_stripe');
 
 
 const Layout = () => {
@@ -24,12 +22,12 @@ const Layout = () => {
         <div>
             <BrowserRouter>
                 <ScrollToTop>
-                    <Elements stripe={stripePromise}>
+                    {/* <Elements stripe={stripePromise}> */}
                         <Routes>
                             <Route element={<Home/>} path="/" />
                             <Route element={<BookingView />} path="/appointment" />
-                            <Route element={<Login />} path="/login" />
                             <Route element={<Blog />} path="/blog" />
+                            <Route element={<About />} path="/about-me" />                            
                             <Route element={<SingleArticle />} path="blog/article/:id" />
                             <Route element={<Process/>} path="/process"/>
                             {token ? (
@@ -40,7 +38,7 @@ const Layout = () => {
 
                             <Route element={<h1>Not found!</h1>} />
                         </Routes>
-                    </Elements>
+                    {/* </Elements> */}
                 </ScrollToTop>
             </BrowserRouter>
         </div>

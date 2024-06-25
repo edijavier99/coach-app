@@ -38,8 +38,9 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px; /* Espacio entre las tarjetas */
+    min-height: 100vh;
   }
-  
+ 
   .card-img-container {
     height: 250px;
     width: auto;
@@ -60,6 +61,10 @@
   .category{
     width: 150px !important;
     cursor: pointer;
+    padding: 10px !important;
+  }
+  .selected{
+    background: rgb(73, 133, 165);
   }
   
   .blog-card img {
