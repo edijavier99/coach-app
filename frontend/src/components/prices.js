@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/prices.css"
 import checkSvg from "../assests/check.svg"
-import { CheckModal } from "./modal";
+import { BookingButton } from "./bookingButton";
 
 export const Prices = () => {
   return (
@@ -33,7 +33,7 @@ export const Prices = () => {
                 <p>Improving mental resilience</p>
               </li>
             </ul>
-            <CheckModal/>
+            <BookingButton/>
           </article>
         </div>
         <div className="primary">
@@ -62,8 +62,7 @@ export const Prices = () => {
                 <p>Injury prevention techniques</p>
               </li>
             </ul>
-            <CheckModal/>
-            <button className="btn-primary">Choose Plan</button>
+            <BookingButton/>
           </article>
         </div>
         <div>
@@ -88,7 +87,7 @@ export const Prices = () => {
                 <p>Balanced diet planning</p>
               </li>
             </ul>
-            <CheckModal/>
+            <BookingButton/>
           </article>
         </div>
       </div>

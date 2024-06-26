@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Autoplay, Pagination, Mousewheel } from 'swiper/modules';
 import "../styles/eachCard.css";
-import  {CheckModal}  from './modal';
+import { BookingButton } from './bookingButton';
 
 export const ServiceCard = ({ title, category, delayTime, description, imgOne, imgTwo, imgThree, reverse, identification }) => {
     const cardLeftClass = reverse ? "sv-card-right col-md-6" : "sv-card-left col-md-6";
@@ -17,7 +17,7 @@ export const ServiceCard = ({ title, category, delayTime, description, imgOne, i
                     <h2 className='each-service-title'>{title}</h2>
                     <p className="text-muted">{category}</p>
                     <p className='each-service-description'>{description}</p>
-                    <CheckModal  selectedForm={category}/> 
+                    <BookingButton />
                 </div>
                 <div className={cardRightClass}>
                     <Swiper

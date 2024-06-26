@@ -1,5 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import "../styles/introduction.css";
+import {IntroCard} from "./introductionCard"
+
 
 export const Introduction = () => {
     const introductionText = `Struggling with my personal life, professional
@@ -15,11 +17,11 @@ export const Introduction = () => {
     const introPersonalInfo = `
     I'm all about helping people feel great inside and out. As a fitness and 
     nutrition coach, my approach goes beyond just workouts and diets. With
-     years of experience, I've specialized in caring for both your mental and 
-     physical health. My goal is to join you on a fun and rewarding journey 
-     towards a healthier, balanced lifestyle. Together, we can make each day a 
-     step closer to your best self, empowering you to embrace a happier and more 
-     fulfilling life.
+    years of experience, I've specialized in caring for both your mental and 
+    physical health. My goal is to join you on a fun and rewarding journey 
+    towards a healthier, balanced lifestyle. Together, we can make each day a 
+    step closer to your best self, empowering you to embrace a happier and more 
+    fulfilling life.
     `;
 
     return (
@@ -33,21 +35,16 @@ export const Introduction = () => {
                 </p>           
             </header>
             <main className="row py-5">
-                <div className="row profile-info mx-auto">
-                    <div className="col-md-12 col-lg-5 profile-image-container">
-                        <img alt="" src="https://images.unsplash.com/photo-1578924608828-79a71150f711?q=80&w=2948&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-                    </div>
-                    <div className="col-md-12 col-lg-7 profile-info-description">
-                        <h3 className="mb-3">I Was Once Like You</h3>
-                        <p>{introductionText}</p>
-                        <p className="text-muted my-3">Personal Coach</p>
-                        <button className="btn booking ">Learn More</button>
-                    </div>
-                </div>
+                <IntroCard 
+                    title="I Was Once Like You"
+                    description={introductionText}
+                    image="https://images.unsplash.com/photo-1578924608828-79a71150f711?q=80&w=2948&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    caption="Personal Coach"
+                />
             </main>
-            <main className="row py-5 ">
+            <main className="row py-5">
                 <div className="row profile-info mx-auto down">
-                    <div className="col-md-12 col-lg-7  profile-info-description">
+                    <div className="col-md-12 col-lg-7 profile-info-description">
                         <h3 className="mb-3">Hi, I’m Jesus.</h3>
                         <p>{introPersonalInfo}</p>
                         <p className="text-muted my-3">Jesus Antonio</p>
@@ -58,7 +55,6 @@ export const Introduction = () => {
                     </div>
                 </div>
             </main>
-            
         </section>
     );
 };

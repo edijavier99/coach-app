@@ -1,0 +1,49 @@
+#about header {
+    text-align: center;
+    padding: 40px 0;
+}
+#about header h1{
+    font-weight: 800;
+}
+#about header h2{
+    font-weight: 700;
+}
+
+.why-us-card{
+    width: 650px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+.card-title{
+    font-weight: 900;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.services-stylish-img-container-down{
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    left: -150px;
+    transform: rotate(45deg);
+}
+
+@media (max-width:992px){
+    .services-stylish-img-container-down{
+        left: -250px;
+    }
+}
+@media (max-width:768px){
+    .services-stylish-img-container-down{
+        left: -260px;
+    }
+    
+}
+@media (max-width:576px){
+    .services-stylish-img-container-down{
+        left: -350px;
+        bottom: -150px;
+    }
+}

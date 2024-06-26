@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/navbar.css";
 import Logo from "../img/logo.jpg";
-import { CheckModal } from "./modal";
+import { BookingButton } from "./bookingButton";
 
 export const Navbar = ({items}) => {
 
@@ -28,7 +28,7 @@ export const Navbar = ({items}) => {
       </button>
       <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul className="navbar-nav mr-auto">{navItems}</ul>
-        <CheckModal selectedForm={"nav"}/>
+        <BookingButton/>
       </div>
     </nav>
   );

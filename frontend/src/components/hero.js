@@ -2,15 +2,10 @@ import React , {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/hero.css"
 import { CheckForm } from "./forms/checkForm";
+import { BookingButton } from "./bookingButton";
 
 export const Hero = () =>{
-    const [verified, setVerified] = useState(false)
-    useEffect(()=>{
-        const verified = localStorage.getItem("verified_user")
-        if(verified){
-            setVerified(true)
-        }
-    },[])
+    
   const navigate = useNavigate()
     return(
       <section id="hero" className="carousel-container">
@@ -31,23 +26,8 @@ export const Hero = () =>{
                         We help you enhance your physical, mental, and overall health. Through small adjustments in mindset, nutrition, and physical activity, even minor changes can lead to remarkable transformations.
                         </p>
                     </div>
-
-                    {verified ? (
-                         <a className="btn booking" href="/process">
-                            Make A Booking
-                         </a>
-                        
-                    ) : (
-                        <a
-                            className="btn booking"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                            >
-                            Make A Booking
-                        </a>
-                    )}
-
-
+                    <BookingButton/>
+                    {/* MODAL TO USE IN ALL THE LANDING PAGE TO SHOW THE CHECK FORM */}
                     <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
