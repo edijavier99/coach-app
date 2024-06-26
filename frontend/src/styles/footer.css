@@ -1,6 +1,8 @@
 #footer{
+    background-color: #212529;
     text-align: center;
     padding: 30px 30px;
+    color: white;
 }
 #footer h4{
     font-size: 35px;

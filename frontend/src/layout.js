@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import ScrollToTop from "./components/scrollToTop";
-import { BookingView } from "./views/booking";
 import { Blog } from "./views/Blog";
 import { Admin } from "./views/Admin";
 import { SingleArticle } from "./views/SingleArticle";
@@ -25,7 +24,6 @@ const Layout = () => {
                     {/* <Elements stripe={stripePromise}> */}
                         <Routes>
                             <Route element={<Home/>} path="/" />
-                            <Route element={<BookingView />} path="/appointment" />
                             <Route element={<Blog />} path="/blog" />
                             <Route element={<About />} path="/about-me" />                            
                             <Route element={<SingleArticle />} path="blog/article/:id" />

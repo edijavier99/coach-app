@@ -1,9 +1,11 @@
 import React from "react";
 import "../styles/introduction.css";
 import {IntroCard} from "./introductionCard"
-
+import { TypingEffect } from "./typeEffect";
 
 export const Introduction = () => {
+
+    const categoryStrings = [" HEALTH | FITNESS | WEALTH | MINDSET", ]
     const introductionText = `Struggling with my personal life, professional
     challenges, and relationships due to not having the right mindset, 
     neglecting proper nutrition, and failing to prioritize self-care,
@@ -28,10 +30,7 @@ export const Introduction = () => {
         <section id="introduction" className="container-fluid">
             <header className="row">
                 <p className="mb-0 fw-bold">
-                    <span className="mx-3">HEALTH</span> | 
-                    <span className="mx-3">FITNESS</span> | 
-                    <span className="mx-3">WEALTH</span> | 
-                    <span className="mx-3">MINDSET</span>
+                   <TypingEffect strings={categoryStrings}/>
                 </p>           
             </header>
             <main className="row py-5">
