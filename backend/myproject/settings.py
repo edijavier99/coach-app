@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "myapp",
+    "blog",
     "rest_framework_simplejwt"
 ]
 

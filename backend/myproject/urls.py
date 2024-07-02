@@ -27,5 +27,5 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('myapp/', include('myapp.urls')),  # Reemplaza 'myapp' con el nombre de tu aplicación
-
+    path('blog/', include('blog.urls')),  # Reemplaza 'myapp' con el nombre de tu aplicación
 ]
