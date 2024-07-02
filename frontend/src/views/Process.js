@@ -22,11 +22,6 @@ export const Process = () => {
         setStep(prevStep => prevStep + 1);
     };
 
-    const onPrevious = () => {
-        setStep(prevStep => prevStep - 1);
-        setAutoProceed(false); // Reinicia el avance automático al paso anterior
-    };
-
     // Función para renderizar el componente correspondiente al paso actual
     const renderStepComponent = () => {
         switch (step) {
@@ -49,8 +44,7 @@ export const Process = () => {
 
     return (
         <section className='container-fluid' id='process'>
-            <div className='row col-9 mx-auto mt-5'>
-                <div className='col-12'>
+            <div className='row col-11 mx-auto mt-5'>
                     <Steps current={step} className='mb-5'>
                         <Steps.Item title="Welcome" />
                         <Steps.Item title="Payment Process" />
@@ -60,20 +54,6 @@ export const Process = () => {
                     <Panel >
                         {renderStepComponent()}
                     </Panel>
-
-                    <hr />
-
-                    <ButtonGroup>
-                        <Button onClick={onPrevious} disabled={step === 0}>
-                            Previous
-                        </Button>
-                        {step < 2 && (
-                            <Button onClick={onNext} disabled={!autoProceed}>
-                                Next
-                            </Button>
-                        )}
-                    </ButtonGroup>
-                </div>
             </div>
         </section>
     );

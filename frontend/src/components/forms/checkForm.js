@@ -35,7 +35,7 @@ export const CheckForm = () => {
               window.location.href = '/process';
             }, 2000); 
           } else {
-            setAlertMessage("You are one step closer to start your change");
+            setAlertMessage("Loading...");
             setShowAlert(true);
             setTimeout(() => {
               window.location.href = '/process';
@@ -76,7 +76,7 @@ export const CheckForm = () => {
         </p>
       </form>
       {showAlert && (
-        <div className='alert alert-sucess' role="alert">
+        <div className='alert alert-success' role="alert">
           {alertMessage}
         </div>
       )}

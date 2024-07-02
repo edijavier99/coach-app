@@ -3,3 +3,13 @@
     align-items: center;
     justify-content: center;
 }
+.custom-button {
+    background-color: #6c757d; /* Color de fondo similar al botón secundario de Bootstrap */
+    color: #fff; /* Color del texto */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    border: 1px solid #6c757d; /* Borde del botón */
+    border-radius: 10px; /* Radio de borde para esquinas redondeadas */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s, color 0.3s; /* Transiciones suaves para cambio de color de fondo y texto */
+}

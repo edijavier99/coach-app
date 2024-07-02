@@ -1,105 +1,36 @@
-/* .navbar-toggler {
-    margin-right: 25px;
-}
-nav {
-    font-size: 18px;
-}
-.nav-item {
-    position: relative;
-    transition: transform 0.3s ease; 
-}
-.nav-item:hover{
-    transform: translateY(-13%)
-}
-.nav-item::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: transparent;
-    transition: width 0.5s ease;
-}
 
-.navbar-brand {
-    height: 70px;
-    margin-left: 30px;
-    width: 100px;
+.booking{
+    background: rgb(0, 162, 255);
+    color: rgb(255, 255, 255);
+    display: table-cell;
+    width: auto;
+    padding: 10px 50px !important;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 2px 5px;
+    font-family: sans-serif;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff !important;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.3s ease; 
+
+}
+.booking:hover{
+    transform: translateY(-5px);
+}
+.adminButton{
+    color:#9B9D9E !important;
+    border-radius: 25px;
+    font-family: sans-serif;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
 }
 .navbar-brand img{
-    height: 100%;
-    width: 100%;
-}
-.nav-link {
-    color: white !important;
-}
-.booking{
-    background: rgb(0, 162, 255);
-    color: rgb(255, 255, 255);
-    display: table-cell;
-    width: auto;
-    padding: 10px 50px !important;
-    border-radius: 25px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 2px 5px;
-    font-family: sans-serif;
-    text-align: center;
-    vertical-align: middle;
-    font-weight: bold;
-    font-size: 14px;
-    color: #fff !important;
-    cursor: pointer;
-    text-decoration: none;
-    transition: transform 0.3s ease; 
-
-}
-.booking:hover{
-    transform: translateY(-5px);
-}
-
-@media (max-width: 790px) {
-    .nav-item {
-        text-align: center;
-    }
-    .navbar-brand {
-        left: 25px;
-    }
-    .navbar-toggler {
-        margin-right: 10px;
-    }
-   
-    .navbar-nav{
-        align-items: center;
-    }
-    .nav-item::after {
-        transition: width 0.1s ease;
-    }
-    
-} */
-
-
-
-
-
-.booking{
-    background: rgb(0, 162, 255);
-    color: rgb(255, 255, 255);
-    display: table-cell;
-    width: auto;
-    padding: 10px 50px !important;
-    border-radius: 25px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 2px 5px;
-    font-family: sans-serif;
-    text-align: center;
-    vertical-align: middle;
-    font-weight: bold;
-    font-size: 14px;
-    color: #fff !important;
-    cursor: pointer;
-    text-decoration: none;
-    transition: transform 0.3s ease; 
-
-}
-.booking:hover{
-    transform: translateY(-5px);
+    height: 30px;
 }

@@ -6,10 +6,10 @@ import { Footer } from "../components/footer";
 
 export const About = () =>{
     const menu = [
-            { label: "Home", url: "/" },
-            { label: "Blog", url: "/blog" },
-            { label: "Login", url: "/login"},
-        ]
+        { label: "Home", url: "/" },
+        { label: "My History", url: "/about-me" },
+        { label: "Blog", url: "/blog" },
+    ];
     return(
         <>
             <Navbar items={menu}  />

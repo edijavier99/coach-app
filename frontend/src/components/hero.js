@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/hero.css";
 import { CheckForm } from "./forms/checkForm";
-import { BookingButton } from "./bookingButton";
 import { CarouselItem } from "./carouselCard";
 
 export const Hero = () => {
@@ -66,7 +65,7 @@ export const Hero = () => {
               <div className="modal-content">
                 <div className="modal-header">
                   <h5 className="modal-title" id="exampleModalLabel">
-                    Modal title
+                    Welcome! 
                   </h5>
                   <button
                     type="button"
@@ -76,6 +75,10 @@ export const Hero = () => {
                   ></button>
                 </div>
                 <div className="modal-body">
+                  <p className="mb-4">Congratulations! You're a step closer to start your change.
+                    Write down yoour email to continue.
+                    Thank you! 
+                  </p>
                   <CheckForm />
                 </div>
                 <div className="modal-footer">

@@ -15,8 +15,6 @@ function Home() {
     { label: "Home", url: "/" },
     { label: "My History", url: "/about-me" },
     { label: "Blog", url: "/blog" },
-    { label: "Login", url: "/login"},
-    // { label : "Booking", url: "/appointment"}
 ];
   const dietDescription = "Get personalized diet plans tailored to your nutritional needs. Our experts will create a customized diet plan based on your dietary preferences, health goals, and lifestyle.";
   const routinesDescription = "Discover personalized workout routines designed to help you achieve your fitness goals. Our fitness experts will create a tailored exercise plan that suits your fitness level, preferences, and objectives.";
