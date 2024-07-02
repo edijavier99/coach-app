@@ -10,7 +10,7 @@ export const Services = () => {
         <section id="services" className="container-fluid mb-5">
             <div className="row">
                 <h3>How I Can Help You ?</h3>
-                <div className="services-card-container row col-10 mx-auto">
+                <div className="services-card-container row col-11 px-0 mx-auto">
                     <ServicesCard 
                         image={one}
                         title="Fitness"

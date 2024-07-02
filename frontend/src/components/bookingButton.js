@@ -12,12 +12,12 @@ export const BookingButton = () => {
     }, []);
 
     return verified ? (
-        <a className="btn booking" href="/process">
+        <a className="btn booking my-3" href="/process">
             Make A Booking
         </a>
     ) : (
         <a
-            className="btn booking"
+            className="btn booking my-3"
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
         >

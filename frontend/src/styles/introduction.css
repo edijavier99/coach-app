@@ -1,5 +1,4 @@
 #introduction {
-    width: 85%;
     background-color: white;
     border-radius: 20px;
 }
@@ -30,7 +29,7 @@
     position: relative;
 }
 .profile-info-description{
-    margin: 70px 0px;
+    margin: 40px 0px;
 }
 
 .profile-image-container img {
@@ -59,6 +58,9 @@
     #introduction button{
        display: flex;
        margin: 0 auto;
+    }
+    .profile-info-description{
+        margin: 75px 0px;
     }
 }
 

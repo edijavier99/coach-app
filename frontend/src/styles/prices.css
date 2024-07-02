@@ -45,6 +45,16 @@
   .grid > div {
     width: 100%;
   }
+
+  @media (max-width:768px) {
+    .plan-title{
+      text-align: center;
+    }
+    .plan-description{
+      max-width: 90%;
+      text-align: center !important;
+    }
+  }
   
   @media (width >= 768px) {
     .grid {

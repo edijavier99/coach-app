@@ -18,6 +18,8 @@
 
 .card-number-img {
     height: 200px;
+    display: flex;
+    margin: 0 auto;
 }
 
 
@@ -67,6 +69,7 @@
     
     .service-card {
         margin-bottom: 20px;
+        padding: 0px;
     }
 
     .service-body {

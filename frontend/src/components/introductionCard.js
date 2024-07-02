@@ -10,7 +10,7 @@ export const IntroCard = (props) => {
                 <h3 className="mb-3">{props.title}</h3>
                 <p>{props.description}</p>
                 <p className="text-muted my-3">{props.caption}</p>
-                <button className="btn booking">Learn More</button>                    
+                <a href="/about-me" className="btn booking">Learn More</a>                    
             </div>
         </article>
     );

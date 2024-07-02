@@ -49,8 +49,8 @@ export const About = () =>{
                             <p className="card-description ">Today, I am privileged to empower individuals like you to embrace wellness as not just a goal, but a fulfilling lifestyle. Together, we navigate challenges, celebrate victories, and create enduring positive changes. My mission is to inspire and guide you on a transformative journey toward holistic health and happiness, where every step forward brings us closer to a life of vitality and fulfillment.</p>
                         </article>
                     </div>
-                    <div className="row mb-5 px-0 mx-0">
-                        <h2 className="card-title px-0">Values</h2>
+                    <div className="row my-5 px-0 mx-0">
+                        <h1 className="card-title text-center px-0">Values I've Learned</h1>
                         <p className="px-0 mb-4">Throughout my personal and professional journey, I have learned fundamental values that have been essential in achieving my current success. These values have not only shaped who I am but have also been crucial to my accomplishments. This is why I am committed to imparting these principles to my students and colleagues, as I believe they are key to success in both personal and professional realms.</p>                       
                         <div className="values-grid">
                             <article className="value-card">

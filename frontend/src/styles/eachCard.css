@@ -1,5 +1,6 @@
 #each-service-card {
-    margin-bottom: 20px; /* Margen inferior para separar los elementos */
+    margin-bottom: 20px; 
+    padding: 0px;
 }
 
 .sv-card-left,
@@ -17,23 +18,24 @@
 }
 
 .text-muted {
-    margin-bottom: 10px; /* Espaciado inferior para la categoría */
+    margin-bottom: 10px; 
 }
 
 .each-service-description {
     max-width: 500px;
-    text-align: center; /* Alineación del texto del servicio */
+    text-align: center; 
 }
 
 .sv-card-left {
-    order: 2; /* Cambiar el orden del elemento en el flujo */
+    order: 2;
+    padding: 0px;
 }
 
 .sv-card-right {
-    order: 1; /* Cambiar el orden del elemento en el flujo */
+    order: 1;
+    padding: 0px;
 }
 
-/* Estilos para el Swiper */
 .mySwiper {
     height: 400px;
 }
@@ -56,3 +58,9 @@
     border-radius: 20px;
 }
 
+@media (max-width:768px) {
+    .sv-card-left {
+        order: 1;
+    }
+    
+}

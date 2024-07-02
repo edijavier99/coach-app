@@ -11,7 +11,7 @@ export const ServiceCard = ({ title, category, delayTime, description, imgOne, i
     const cardRightClass = reverse ? "sv-card-left col-md-6" : "sv-card-right col-md-6";
 
     return (
-        <article id="each-service-card" className="container-fluid">
+        <article id="each-service-card" className="container-fluid mb-5">
             <div className="row col-11 mx-auto" id={identification}>
                 <div className={cardLeftClass}>
                     <h2 className='each-service-title'>{title}</h2>
@@ -36,10 +36,10 @@ export const ServiceCard = ({ title, category, delayTime, description, imgOne, i
                             <img alt={`img-${category}`} src={imgOne} />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <img alt='' src={imgTwo} />
+                            <img alt={`img-${category}`} src={imgTwo} />
                         </SwiperSlide>
                         <SwiperSlide>
-                            <img alt='' src={imgThree} />
+                            <img alt={`img-${category}`} src={imgThree} />
                         </SwiperSlide>
                     </Swiper>
                 </div>

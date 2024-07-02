@@ -47,8 +47,8 @@ export const Reviews = () => {
   };
 
   return (
-    <section id="reviews" className="container-fluid my-5">
-      <div className="row justify-content-center">
+    <section id="reviews" className="container-fluid my-5 px-0">
+      <div className="row justify-content-center mx-0">
         <div className="col-md-10">
           <h4 className="mb-4 text-center mt-5">Testimonials</h4>
           <p className="lead reviews-lead">Discover how our clients have transformed their lives with our personalized coaching services. Read their inspiring stories below:</p>

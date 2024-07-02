@@ -4,8 +4,7 @@ import {IntroCard} from "./introductionCard"
 import { TypingEffect } from "./typeEffect";
 
 export const Introduction = () => {
-
-    const categoryStrings = [" HEALTH | FITNESS | WEALTH | MINDSET", ]
+    const categoryStrings = ["health improvement","fitness goals","wealth ","mindset change" ]
     const introductionText = `Struggling with my personal life, professional
     challenges, and relationships due to not having the right mindset, 
     neglecting proper nutrition, and failing to prioritize self-care,
@@ -27,10 +26,10 @@ export const Introduction = () => {
     `;
 
     return (
-        <section id="introduction" className="container-fluid">
+        <section id="introduction" className="container-fluid col-11 mx-auto">
             <header className="row">
                 <p className="mb-0 fw-bold">
-                   <TypingEffect strings={categoryStrings}/>
+                    I'm here to help your with your <TypingEffect strings={categoryStrings}/>
                 </p>           
             </header>
             <main className="row py-5">
@@ -41,19 +40,19 @@ export const Introduction = () => {
                     caption="Personal Coach"
                 />
             </main>
-            <main className="row py-5">
+            <footer className="row py-5">
                 <div className="row profile-info mx-auto down">
                     <div className="col-md-12 col-lg-7 profile-info-description">
                         <h3 className="mb-3">Hi, I’m Jesus.</h3>
                         <p>{introPersonalInfo}</p>
                         <p className="text-muted my-3">Jesus Antonio</p>
-                        <button className="btn booking">Learn More</button>
+                        <a href="/about-me" className="btn booking" >Learn More</a>
                     </div>
                     <div className="col-md-12 col-lg-5 profile-image-container ">
                         <img alt="" src="https://images.unsplash.com/photo-1605296866985-34ba3c0b527b?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
                     </div>
                 </div>
-            </main>
+            </footer>
         </section>
     );
 };
