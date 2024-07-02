@@ -26,7 +26,7 @@ const Layout = () => {
                             <Route element={<Home/>} path="/" />
                             <Route element={<Blog />} path="/blog" />
                             <Route element={<About />} path="/about-me" />                            
-                            <Route element={<SingleArticle />} path="blog/article/:id" />
+                            <Route element={<SingleArticle />} path="blog/post/:id" />
                             <Route element={<Process/>} path="/process"/>
                             {token ? (
                                 <Route element={<Admin />} path="/admin" />

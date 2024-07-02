@@ -13,11 +13,12 @@ export const SingleArticle = () => {
 
     const fetchSingleArticle = async () => {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/myapp/api/article/${id}`);
+            const response = await fetch(`http://127.0.0.1:8000/blog/post/${id}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
+            console.log(data);
             setArticle(data);
         } catch (err) {
             setError(err.message);
@@ -60,36 +61,36 @@ const ArticleContent = ({ article, copyToClipboard }) => {
         <article id="blog-article">
             <header className="row col-10 mx-auto">
                 <div className="col-12 text-center">
-                    <p className="mt-3">{capitalizeFirstLetter(article.article_category)}</p>
-                    <h1 className="my-3">{article.article_title}</h1>
-                    <p className="text-muted mb-5">{article.article_subtitle}</p>
+                    <p className="mt-3">{capitalizeFirstLetter(article.category)}</p>
+                    <h1 className="my-3">{article.title}</h1>
+                    <p className="text-muted mb-5">{article.subtitle}</p>
                 </div>
             </header>
             <main className="row col-10 mx-auto">
                 <div className="col-12 col-md-6 article-image-container">
-                    <img src={article.article_image_url} alt={`${article.article_title} image`} />
+                    <img src={article.image_url} alt={`${article.title}`} />
                 </div>
                 <div className="col-12 col-md-6">
-                    <p>{article.article_description && (
+                    <p>{article.description && (
                         <>
-                            <span className="first-letter">{article.article_description.charAt(0)}</span>
-                            {article.article_description.slice(1)}
+                            <span className="first-letter">{article.description.charAt(0)}</span>
+                            {article.description.slice(1)}
                         </>
                     )}</p>
                 </div>
             </main>
             <footer className="row mx-auto col-10 mt-5 text-center">
-                <p className="text-muted">{article.article_day_posted}</p>
+                <p className="text-muted">{article.day_posted}</p>
                 <div className="share-buttons">
                     <p className="mb-2 text-muted">Share this article</p>
                     {/* Botones de compartir */}
                     <a href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} target="_blank" rel="noopener noreferrer">
-                        <i class="fa-brands fa-facebook"></i>
+                        <i className="fa-brands fa-facebook"></i>
                     </a>
                     <a href={`https://www.linkedin.com/shareArticle?url=${window.location.href}`} target="_blank" rel="noopener noreferrer">
-                        <i class="fa-brands fa-linkedin"></i>
+                        <i className="fa-brands fa-linkedin"></i>
                     </a>
-                    <i class="fa-solid fa-copy"  onClick={copyToClipboard}></i>
+                    <i className="fa-solid fa-copy"  onClick={copyToClipboard}></i>
                 </div>
                 {/* Botón para copiar enlace */}
             </footer>

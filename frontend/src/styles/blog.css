@@ -87,7 +87,7 @@
 }
 
 #blog-newsletter{
-  background: rgb(46, 84, 105);
+  background: #212529;
   color: white;
   height: 200px;
   display: flex;
@@ -107,6 +107,10 @@
     display: flex;
     flex-direction: column !important;
   }
+  .filterFields{
+    margin-top: 20px;  
+  }
+  
 }
 
 @media (max-width: 576px) {
