@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/navbar.css";
-import Logo from "../img/logo.jpg";
+// import Logo from "../img/logo.jpg";
 import { BookingButton } from "./bookingButton";
 import { LoginModal } from "./loginModal";
 

@@ -15,11 +15,11 @@ export const LoginModal = () => {
     return (
         <>
             {access_token ? (
-                <a type="button" className="btn adminButton" href="/admin">
+                <a className="btn adminButton" href="/admin">
                     Admin
                 </a>
             ) : (
-                <a
+                <button
                     type="button"
                     className="btn adminButton"
                     data-bs-toggle="modal"
@@ -27,7 +27,7 @@ export const LoginModal = () => {
                     onClick={handleLoginClick}
                 >
                     Login
-                </a>
+                </button>
             )}
 
             <div className="modal fade" id="LoginModal" tabIndex="-1" aria-labelledby="LoginModalLabel" aria-hidden="true">
@@ -49,4 +49,3 @@ export const LoginModal = () => {
         </>
     );
 };
-

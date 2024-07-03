@@ -16,12 +16,12 @@ export const BookingButton = () => {
             Make A Booking
         </a>
     ) : (
-        <a
+        <button
             className="btn booking my-3"
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
         >
             Make A Booking
-        </a>
+        </button>
     );
 };

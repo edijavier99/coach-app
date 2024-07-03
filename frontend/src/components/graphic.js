@@ -3,28 +3,28 @@ import Plotly from 'plotly.js-dist';
 import createPlotlyComponent from 'react-plotly.js/factory';
 const AddWeightRecord = React.lazy(() => import('./forms/addWeightRecord'));
 
-
 const Plot = createPlotlyComponent(Plotly);
 
 const Graphic = ({onBack, client}) => {
     const [data, setData] = useState([]);  
-    useEffect(() => {
-        fetchRecords();
-    }, []);
 
-    const fetchRecords = () => {
-        fetch(`${process.env.REACT_APP_BACKEND_URL}api/weight_graphic/${client}`)
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return res.json();
-            })
-            .then(data => {
-                setData(data);  
-            })
-            .catch(err => console.error('Error fetching data:', err));
-    };
+    useEffect(() => {
+        const fetchRecords = () => {
+            fetch(`${process.env.REACT_APP_BACKEND_URL}api/weight_graphic/${client}`)
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    setData(data);  
+                })
+                .catch(err => console.error('Error fetching data:', err));
+        };
+
+        fetchRecords();  // Llama a fetchRecords dentro del efecto
+    }, [client]);  // Añade client al array de dependencias si es necesario
 
     const buildChartData = () => {
         if (data.length === 0) {
@@ -76,9 +76,8 @@ const Graphic = ({onBack, client}) => {
             yaxis: {
                 title: 'Kgs',
                 range: [40, 100],  
-                tickvals: [40, 60, 80, 100],  
                 tickvals: Array.from({length: 13}, (_, i) => 40 + i * 5),  // Valores de las marcas del eje y desde 40 a 100 con incremento de 5
-              }
+            }
         }
     };
 

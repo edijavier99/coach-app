@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "../styles/process.css";
 import 'rsuite/Steps/styles/index.css';
 import { Welcome } from '../components/process/welcome';
-import { Steps, Panel, ButtonGroup, Button } from 'rsuite';
+import { Steps, Panel } from 'rsuite';
 import { InlineWidget } from "react-calendly";
 
 export const Process = () => {

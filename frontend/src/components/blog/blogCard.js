@@ -1,7 +1,7 @@
 // components/BlogCard.js
 import React from "react";
 
-export const BlogCard = ({ article, navigate }) => {
+export const BlogCard = ({ article }) => {
   return (
     <div className="blog-card">
       <div className="card-img-container">

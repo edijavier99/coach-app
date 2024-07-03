@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../styles/createArticle.css";
 
 const CreateArticle = () => {
-  const token = localStorage.getItem("access_token")
+  // const token = localStorage.getItem("access_token")
   const cloudName = 'dhyrv5g3w';
   const uploadPreset = 'ptwmh2mt';
   const [article, setArticle] = useState({
@@ -112,7 +112,7 @@ const CreateArticle = () => {
     };
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/myapp/api/articles/create/', {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}blog/post/create/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -121,7 +121,7 @@ const CreateArticle = () => {
       });
 
       if (response.ok) {
-        const data = await response.json();
+        // const data = await response.json();
         handleReset(); 
       } else {
         console.error("Error saving article:", response.statusText);

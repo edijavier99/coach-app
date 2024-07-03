@@ -1,11 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import "../styles/hero.css";
 import { CheckForm } from "./forms/checkForm";
 import { CarouselItem } from "./carouselCard";
 
 export const Hero = () => {
-  const navigate = useNavigate();
   return (
     <section id="hero" className="carousel-container">
       <div

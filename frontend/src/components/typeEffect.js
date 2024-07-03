@@ -27,8 +27,7 @@ export const TypingEffect = ({ strings, typeSpeed = 170, backSpeed = 80, backDel
     timer = setTimeout(handleType, typingSpeed);
 
     return () => clearTimeout(timer);
-  }, [text, isDeleting, loopNum, strings, typeSpeed, backSpeed, backDelay]);
+  }, [text, isDeleting, loopNum, strings, typeSpeed, backSpeed, backDelay, typingSpeed]); // Include typingSpeed in the dependency array
 
   return <span>{text}</span>;
 };
-

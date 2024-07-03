@@ -1,18 +1,17 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from '../store/appContext';
 import "../styles/components/allArticles.css";
 import { useNavigate } from "react-router-dom";
 import { useGetFetch } from "../hooks/get";
 
 export const AllArticles = () => {
-    const { actions, store } = useContext(Context);
+    const { actions } = useContext(Context);
     const [articlesList, setArticlesList] = useState([]);
     const navigate = useNavigate();
     const [articleToDelete, setArticleToDelete] = useState();
     const { data: articles, loading, error } = useGetFetch(`${process.env.REACT_APP_BACKEND_URL}api/articles`);
   
   useEffect(() => {
-    console.log("averrr");
     if (!loading && !error) {
         setArticlesList(articles);
     }
@@ -45,7 +44,6 @@ export const AllArticles = () => {
 
     const handlePenClick = (item_id) => {
         actions.fetchSingleArticle(item_id)
-        console.log(item_id);
     }
 
     const showArticles = () => {

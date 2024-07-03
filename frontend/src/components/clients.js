@@ -45,9 +45,9 @@ const Clients = () => {
               <div className='col-4 d-flex justify-content-end align-items-start'>
                   <i className="fa-solid fa-gear dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
                   <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a className="dropdown-item" href="#" onClick={() => handleSelect('profile', item)}>Profile</a></li>
-                      <li><a className="dropdown-item" href="#" onClick={() => handleSelect('graphic', item)}>Graphics</a></li>
-                      <li><a className="ms-3 btn btn-danger" href="#">Delete</a></li>
+                      <li><button className="dropdown-item"  onClick={() => handleSelect('profile', item)}>Profile</button></li>
+                      <li><button className="dropdown-item"onClick={() => handleSelect('graphic', item)}>Graphics</button></li>
+                      <li><button className="ms-3 btn btn-danger">Delete</button></li>
                   </ul>
               </div>
           </div>

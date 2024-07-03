@@ -3,8 +3,6 @@ import "../../styles/login.css";
 
 const AddWeightRecord = ({ client_id }) => {
 
-    console.log(client_id, "siiiii");
-
     const [recordForm, setRecordForm] = useState({
         weightValue: "",
     });

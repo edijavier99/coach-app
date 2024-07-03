@@ -11,25 +11,26 @@ export const SingleArticle = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const fetchSingleArticle = async () => {
-        try {
-            const response = await fetch(`http://127.0.0.1:8000/blog/post/${id}`);
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const data = await response.json();
-            console.log(data);
-            setArticle(data);
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
-    };
-
     useEffect(() => {
-        fetchSingleArticle();
-    }, [id]);
+        const fetchSingleArticle = async () => {
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/blog/post/${id}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                console.log(data);
+                setArticle(data);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchSingleArticle(); // Invoke fetchSingleArticle immediately
+
+    }, [id]); // Dependency array includes 'id'
 
     const copyToClipboard = () => {
         const el = document.createElement('textarea');
@@ -53,9 +54,9 @@ export const SingleArticle = () => {
 
 const ArticleContent = ({ article, copyToClipboard }) => {
 
-    const capitalizeFirstLetter = (string) =>{
-        return string.charAt(0).toUpperCase() + string.slice(1)
-    }
+    const capitalizeFirstLetter = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    };
 
     return (
         <article id="blog-article">
@@ -83,16 +84,16 @@ const ArticleContent = ({ article, copyToClipboard }) => {
                 <p className="text-muted">{article.day_posted}</p>
                 <div className="share-buttons">
                     <p className="mb-2 text-muted">Share this article</p>
-                    {/* Botones de compartir */}
+                    {/* Share buttons */}
                     <a href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} target="_blank" rel="noopener noreferrer">
                         <i className="fa-brands fa-facebook"></i>
                     </a>
                     <a href={`https://www.linkedin.com/shareArticle?url=${window.location.href}`} target="_blank" rel="noopener noreferrer">
                         <i className="fa-brands fa-linkedin"></i>
                     </a>
-                    <i className="fa-solid fa-copy"  onClick={copyToClipboard}></i>
+                    <i className="fa-solid fa-copy" onClick={copyToClipboard}></i>
                 </div>
-                {/* Botón para copiar enlace */}
+                {/* Button to copy link */}
             </footer>
         </article>
     );
