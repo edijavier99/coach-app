@@ -12,6 +12,7 @@ pymysql = "*"
 djangorestframework-simplejwt = "*"
 plotly = "*"
 pandas = "*"
+gunicorn = "*"
 
 [dev-packages]
 
