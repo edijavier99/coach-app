@@ -4,7 +4,7 @@ import "../styles/clients.css";
 
 // Importa tus componentes perezosos
 const LazyProfile = React.lazy(() => import('./profile'));
-const LazyAnnotations = React.lazy(() => import('./annotations'));
+const LazyAnnotations = React.lazy(() => import('./graphic'));
 
 const Clients = () => {
   const [allClients, setAllClients] = useState([]);
@@ -46,7 +46,7 @@ const Clients = () => {
                   <i className="fa-solid fa-gear dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
                   <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <li><a className="dropdown-item" href="#" onClick={() => handleSelect('profile', item)}>Profile</a></li>
-                      <li><a className="dropdown-item" href="#" onClick={() => handleSelect('annotations', item)}>Annotations</a></li>
+                      <li><a className="dropdown-item" href="#" onClick={() => handleSelect('annotations', item)}>Graphics</a></li>
                       <li><a className="ms-3 btn btn-danger" href="#">Delete</a></li>
                   </ul>
               </div>
