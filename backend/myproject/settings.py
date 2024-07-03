@@ -101,11 +101,11 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jesus_app',
-        'USER':'root',
-        'PASSWORD': '',
-        'HOST':'127.0.0.1',
-        'PORT': 3306
+        'NAME': 'jesus_db',  
+        'USER': 'admin',    
+        'PASSWORD': 'Ilargia1234',  
+        'HOST': 'database-1.c5w8ukwgqz6r.eu-north-1.rds.amazonaws.com',  
+        'PORT': '3306', 
     }
 }
 
