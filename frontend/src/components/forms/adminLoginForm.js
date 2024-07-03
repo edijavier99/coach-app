@@ -71,7 +71,7 @@ export const AdminLoginForm = () => {
                         className="form-control"
                         id="emailInput"
                         name="emailInput"
-                        value={loginForm.email}
+                        value={loginForm.emailInput}
                         onChange={handleChange}
                         placeholder="name@example.com"
                         required
@@ -80,11 +80,11 @@ export const AdminLoginForm = () => {
                 </div>
                 <div className="form-floating mb-3">
                     <input
-                        type="email"
+                        type="password"
                         className="form-control"
                         id="passwordInput"
                         name="passwordInput"
-                        value={loginForm.email}
+                        value={loginForm.passwordInput}
                         onChange={handleChange}
                         placeholder="Password"
                         required
