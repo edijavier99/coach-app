@@ -89,7 +89,7 @@ export const AdminLoginForm = () => {
                         placeholder="Password"
                         required
                     />
-                    <label htmlFor="emailInput">Password</label>
+                    <label htmlFor="passwordInput">Password</label>
                 </div>
                 <button className="btn btn-primary w-100 my-3 py-2" type="submit">
                 Submit
