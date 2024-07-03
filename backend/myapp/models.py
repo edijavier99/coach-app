@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.hashers import make_password, check_password
+from django.utils import timezone
 
 
 # Create your models here.
@@ -35,11 +36,40 @@ class User(models.Model):
 
     def check_password(self, raw_password):
         return check_password(raw_password, self.user_password)
+
     
 class Client(models.Model):
     client_name = models.CharField(max_length=100)
     client_surname = models.CharField(max_length=100)
-    client_email = models.EmailField()
+    client_email = models.EmailField(unique=True)
 
     def __str__(self):
         return self.client_email
+    
+
+# PARENT CLASS FOR RECORDS
+
+class Graphic(models.Model):
+    client = models.ForeignKey(Client, on_delete=models.CASCADE, related_name='graphics')
+    created_day = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        abstract = True
+
+    def __str__(self):
+        return f"{self.client.client_name} {self.client.client_surname} - {self.created_day}"
+
+
+class WeightGraphic(Graphic):
+    value = models.FloatField()
+    unit = models.CharField(max_length=10, default='kg')
+
+    def save(self, *args, **kwargs):
+        # Validar que el valor de peso sea mayor o igual a 40 kg
+        if self.value < 40:
+            raise ValueError("Weight must be 40 kg or more.")
+
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"Weight - {super().__str__()} {self.value} {self.unit}"
