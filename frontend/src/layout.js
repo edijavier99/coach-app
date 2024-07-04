@@ -29,9 +29,9 @@ const Layout = () => {
                             <Route element={<SingleArticle />} path="blog/post/:id" />
                             <Route element={<Process/>} path="/process"/>
                             {token ? (
-                                <Route element={<Admin />} path="/admin" />
+                                <Route element={<Admin />} path="/administrator" />
                             ) : (
-                                <Route path="/admin" element={<Navigate to="/login" replace />} />
+                                <Route path="/administrator" element={<Navigate to="/login" replace />} />
                             )}
 
                             <Route element={<h1>Not found!</h1>} />
