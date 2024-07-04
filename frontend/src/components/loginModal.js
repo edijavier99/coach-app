@@ -15,7 +15,7 @@ export const LoginModal = () => {
     return (
         <>
             {access_token ? (
-                <a className="btn adminButton" href="/admin">
+                <a className="btn adminButton" href="/administrator">
                     Admin
                 </a>
             ) : (
