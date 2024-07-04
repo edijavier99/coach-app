@@ -49,7 +49,7 @@ export const AdminLoginForm = () => {
                 handleReset();
                 localStorage.setItem("access_token", data.access_token)
                 if(data.access_token){
-                    navigate('/admin'); // Navegar a la página principal después del login exitoso
+                    navigate('/administrator'); // Navegar a la página principal después del login exitoso
                 }
             } else {
                 throw new Error('Failed to login'); // Forzar un error para mostrar el mensaje de error
