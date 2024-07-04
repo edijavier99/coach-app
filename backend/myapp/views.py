@@ -9,6 +9,8 @@ from .models import Article,User, Client,WeightGraphic
 from .serializers import ArticleSerializer, UserSerializer,ClientSerializer,WeightGraphicSerializer
 from django.contrib.auth import authenticate
 import plotly.express as px
+from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
+
 from .serializers import PlotDataSerializer
 
 @api_view(['POST'])
