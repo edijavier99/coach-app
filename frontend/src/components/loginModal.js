@@ -8,7 +8,7 @@ export const LoginModal = () => {
 
     const handleLoginClick = () => {
         if (access_token) {
-            navigate('/admin'); // Redirigir a la página de administrador si hay access_token
+            navigate('/administrator'); // Redirigir a la página de administrador si hay access_token
         }
     };
 
