@@ -42,12 +42,15 @@ def login_user(request):
     user_email = request.data.get('user_email')
     password = request.data.get('user_password')
 
+
     try:
         user = User.objects.get(user_email=user_email)
     except User.DoesNotExist:
         return Response({'error': 'The user doesn´t exist'}, status=status.HTTP_401_UNAUTHORIZED)
 
     # Verificar la contraseña
+    print(password)
+    print(user.user_password)
     if not check_password(password, user.user_password):
         return Response({'error': 'Credenciales inválidas'}, status=status.HTTP_401_UNAUTHORIZED)
 
