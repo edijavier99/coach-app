@@ -1,0 +1,2 @@
+#client-card{padding:20px}#client-card,.cc-header{background-color:#d1d1d1;border-radius:20px}.clients-grid{grid-gap:20px;display:grid;gap:20px;grid-template-columns:repeat(3,1fr)}@media (max-width:1024px){.clients-grid{grid-template-columns:repeat(2,1fr)}}@media (max-width:768px){.clients-grid{grid-template-columns:1fr}}
+/*# sourceMappingURL=9.440f3c73.chunk.css.map*/
