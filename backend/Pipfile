@@ -13,6 +13,7 @@ djangorestframework-simplejwt = "*"
 plotly = "*"
 pandas = "*"
 gunicorn = "*"
+whitenoise = {extras = ["brotli"], version = "*"}
 
 [dev-packages]
 
