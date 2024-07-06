@@ -6,28 +6,31 @@ from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework import status
 from .models import Article,User, Client,WeightGraphic
-from .serializers import ArticleSerializer, UserSerializer,ClientSerializer,WeightGraphicSerializer
+from .serializers import UserSerializer,ClientSerializer,WeightGraphicSerializer,UserLoginSerializer
 from django.contrib.auth import authenticate
-import plotly.express as px
-from rest_framework_simplejwt.tokens import RefreshToken, AccessToken
 
-from .serializers import PlotDataSerializer
 
 @api_view(['POST'])
 def create_user(request):
     serializer = UserSerializer(data=request.data)
+
     if serializer.is_valid():
-        password = request.data.get('user_password') 
-        user = serializer.save()  # No incluir commit=False aquí
-        if password:
-            user.set_password(password)
-            user.save()  # Guardar el usuario después de establecer la contraseña
+        serializer.save()  # Aquí ya se guarda el usuario correctamente
+        # No es necesario llamar user.save() nuevamente, ya que serializer.save() ya guarda los cambios
         
         return Response({"message": "Usuario creado correctamente"}, status=status.HTTP_201_CREATED)
     
     # Si el serializer no es válido, devolver los errores de validación
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+@api_view(['POST'])
+def login_user(request):
+    serializer = UserLoginSerializer(data=request.data)
+    if serializer.is_valid():
+        return Response(serializer.validated_data, status=status.HTTP_200_OK)
+    
+    return Response(serializer.errors, status=status.HTTP_401_UNAUTHORIZED)
 
 @api_view(['POST'])
 def create_client(request):
@@ -37,37 +40,6 @@ def create_client(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-
-@api_view(['POST'])
-def login_user(request):
-    user_email = request.data.get('user_email')
-    password = request.data.get('user_password')
-
-
-    try:
-        user = User.objects.get(user_email=user_email)
-    except User.DoesNotExist:
-        return Response({'error': 'The user doesn´t exist'}, status=status.HTTP_401_UNAUTHORIZED)
-
-    # Verificar la contraseña
-    print(password)
-    print(user.user_password)
-    if not check_password(password, user.user_password):
-        return Response({'error': 'Credenciales inválidas'}, status=status.HTTP_401_UNAUTHORIZED)
-
-    # Generar tokens JWT
-    refresh = RefreshToken.for_user(user)
-    access_token = AccessToken.for_user(user)
-
-    # Serializar el usuario si es necesario
-    serializer = UserSerializer(user)
-
-    return Response({
-        'access_token': str(access_token),
-        'refresh_token': str(refresh),
-        'user': serializer.data  # Incluir datos del usuario en la respuesta si es necesario
-    }, status=status.HTTP_200_OK)
 
 @api_view(['POST'])
 def verify_client(request):
@@ -128,14 +100,5 @@ def get_weight_graphic(request, client_id):
 
 
 
-class PlotData(APIView):
-    def get(self, request):
-        df = px.data.iris()
-        data = {
-            'sepal_width': df['sepal_width'].tolist(),
-            'sepal_length': df['sepal_length'].tolist(),
-            'species': df['species'].tolist(),
-        }
-        serializer = PlotDataSerializer(data)
-        return Response(serializer.data)
-    
+
+

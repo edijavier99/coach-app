@@ -45,10 +45,11 @@ export const AdminLoginForm = () => {
     
             if (response.ok) {
                 const data = await response.json();
-                console.log(data);
+                console.log(data.tokens.access);
                 handleReset();
-                localStorage.setItem("access_token", data.access_token)
-                if(data.access_token){
+                localStorage.setItem('refreshToken', data.tokens.refresh);
+                localStorage.setItem("access_token", data.tokens.access)
+                if(data.tokens.access){
                     navigate('/administrator'); // Navegar a la página principal después del login exitoso
                 }
             } else {
@@ -76,7 +77,7 @@ export const AdminLoginForm = () => {
                         placeholder="name@example.com"
                         required
                     />
-                    <label htmlFor="emailInput">Email</label>
+                    <label htmlFor="emailInput">Emaillllll</label>
                 </div>
                 <div className="form-floating mb-3">
                     <input

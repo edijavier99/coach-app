@@ -1,9 +1,54 @@
 from django.db import models
-from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.utils import timezone
 
 
-# Create your models here.
+# class User(models.Model):
+#     email = models.EmailField(unique=True)
+#     first_name = models.CharField(max_length=30, blank=True)
+#     last_name = models.CharField(max_length=30, blank=True)
+#     date_joined = models.DateTimeField(default=timezone.now)
+#     is_active = models.BooleanField(default=True)
+#     is_staff = models.BooleanField(default=False)
+
+#     def __str__(self):
+#         return self.email
+class UserAccountManager(BaseUserManager):
+    def create_user(self, email, name, password):
+        if not email:
+            raise ValueError('User must have an email address')
+        if not password:
+            raise ValueError('User must have a password')
+        
+        email = self.normalize_email(email)
+        user = self.model(email=email, name=name)
+        user.set_password(password)
+        user.save(using=self._db)
+        
+        return user
+    
+    def create_superuser(self, email, name, password):
+        user = self.create_user(email, name, password=password)
+        user.is_staff = True
+        user.is_superuser = True
+        user.save(using=self._db)
+
+        return user
+
+class User(AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(max_length=255, unique=True)
+    name = models.CharField(max_length=255)  # Valor predeterminado temporal
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+
+    objects = UserAccountManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['name']
+
+    def __str__(self):
+        return self.email
+    
 class Article(models.Model):
     CATEGORY_CHOICES = [
         ('fitness', 'Fitness'),
@@ -21,22 +66,6 @@ class Article(models.Model):
 
     def __str__(self):
         return self.article_title
-
-class User(models.Model):
-    user_name = models.CharField(max_length=100)
-    user_surname = models.CharField(max_length=100)
-    user_email = models.EmailField(unique=True)
-    user_password = models.CharField(max_length=255, default='')
-
-    def __str__(self):
-        return self.user_email
-
-    def set_password(self, raw_password):
-        self.user_password = make_password(raw_password)
-
-    def check_password(self, raw_password):
-        return check_password(raw_password, self.user_password)
-
     
 class Client(models.Model):
     client_name = models.CharField(max_length=100)
@@ -73,3 +102,4 @@ class WeightGraphic(Graphic):
 
     def __str__(self):
         return f"Weight - {super().__str__()} {self.value} {self.unit}"
+
