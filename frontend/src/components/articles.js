@@ -42,9 +42,9 @@ const Articles = () => {
                 <p>This section allows you to add, delete, edit, and create articles that will be posted on the blog.</p>
             </header>
 
-            <main className='aa-main row col-11 mx-auto'>
+            <main className='aa-main row col-11  mx-auto'>
                 <div className="accordion-container p-4">
-                    <div className="accordion-titles">
+                    <div className="accordion-titles row ">
                         {items.map((item, index) => (
                             <AccordionItem
                                 key={index}
@@ -55,7 +55,7 @@ const Articles = () => {
                             />
                         ))}
                     </div>
-                    <div className="accordion-contents">
+                    <div className="accordion-contents row">
                         {items.map((item, index) => (
                             <div
                                 key={index}

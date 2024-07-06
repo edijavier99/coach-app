@@ -46,4 +46,16 @@
     display: block;
   }
   
+
+@media (max-width:768px) {
+  #admin-article{
+    padding: 0px;
+  }
+  .accordion-content{
+    padding: 0px;
+  }
+  .accordion-body{
+    padding: 0px;
+  }
+}
   
