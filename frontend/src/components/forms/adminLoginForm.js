@@ -77,7 +77,7 @@ export const AdminLoginForm = () => {
                         placeholder="name@example.com"
                         required
                     />
-                    <label htmlFor="emailInput">Email</label>
+                    <label htmlFor="emailInput">Emaillllll</label>
                 </div>
                 <div className="form-floating mb-3">
                     <input
