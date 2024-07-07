@@ -44,7 +44,7 @@ export const Blog = () => {
   };
 
   const showArticlesByCategory = (category = null) => {
-    let apiUrl = "http://127.0.0.1:8000/blog/post_list";
+    let apiUrl = `${process.env.BACKEND_URL}blog/post_list`;
     if (category) {
       apiUrl += `?category=${category}`;
       setSelectedCategory(category);
