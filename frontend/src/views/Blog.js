@@ -44,7 +44,7 @@ export const Blog = () => {
   };
 
   const showArticlesByCategory = (category = null) => {
-    let apiUrl = `${process.env.BACKEND_URL}blog/post_list`;
+    let apiUrl = `${process.env.REACT_APP_BACKEND_URL}blog/post_list`;
     if (category) {
       apiUrl += `?category=${category}`;
       setSelectedCategory(category);
