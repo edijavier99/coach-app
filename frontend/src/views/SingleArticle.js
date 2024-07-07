@@ -12,10 +12,9 @@ export const SingleArticle = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        console.log(`${process.env.BACKEND_URL}/blog/post/${id}`);
         const fetchSingleArticle = async () => {
             try {
-                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/blog/post/${id}`);
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}blog/post/${id}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
