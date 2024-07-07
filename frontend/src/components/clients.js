@@ -10,7 +10,7 @@ const Clients = () => {
   const [allClients, setAllClients] = useState([]);
   const [selectedComponent, setSelectedComponent] = useState(null); // Estado para controlar el componente seleccionado
   const [selectedClient, setSelectedClient] = useState(null); // Estado para almacenar el cliente seleccionado
-  const { data: clients, loading, error } = useGetFetch(`${process.env.REACT_APP_BACKEND_URL}api/clients`);
+  const { data: clients, loading, error } = useGetFetch(`${process.env.REACT_APP_BACKEND_URL}/myapp/api/clients`);
   
   useEffect(() => {
     if (!loading && !error) {

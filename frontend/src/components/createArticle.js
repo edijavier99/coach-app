@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import "../styles/createArticle.css";
 
 const CreateArticle = () => {
-  // const token = localStorage.getItem("access_token")
   const cloudName = 'dhyrv5g3w';
   const uploadPreset = 'ptwmh2mt';
   const [article, setArticle] = useState({
-    article_title: "",
-    article_subtitle: "",
-    article_description: "",
-    article_category: "fitness" // Valor predeterminado
+    title: "",
+    subtitle: "",
+    description: "",
+    category: "fitness"
   });
 
   const [files, setFiles] = useState([]);
@@ -59,10 +58,10 @@ const CreateArticle = () => {
 
   const handleReset = () => {
     setArticle({
-      article_title: "",
-      article_subtitle: "",
-      article_description: "",
-      article_category: "fitness"
+      title: "",
+      subtitle: "",
+      description: "",
+      category: "fitness"
     });
     setFiles([]);
     setImagePreview(null);
@@ -89,29 +88,27 @@ const CreateArticle = () => {
     }
   };
 
-  
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let article_image_url = '';
+    let image_url = '';
     if (files.length > 0) {
       try {
         const file = files[0];
-        article_image_url = await uploadToCloudinary(file);
+        image_url = await uploadToCloudinary(file);
       } catch (error) {
         console.error("Error uploading image:", error);
         return;
       }
     }
 
-    const currentDate = new Date().toISOString().split('T')[0];  // Formato YYYY-MM-DD
     const articleData = {
       ...article,
-      article_image_url,
-      article_day_posted: currentDate  // Añadir la fecha actual
+      image_url,
+      slug : article.title
     };
 
     try {
+      console.log(articleData);
       const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}blog/post/create/`, {
         method: 'POST',
         headers: {
@@ -121,7 +118,6 @@ const CreateArticle = () => {
       });
 
       if (response.ok) {
-        // const data = await response.json();
         handleReset(); 
       } else {
         console.error("Error saving article:", response.statusText);
@@ -135,27 +131,27 @@ const CreateArticle = () => {
     <form id="create-article" onSubmit={handleSubmit}>
       <div className="row mb-3">
         <div className="col-md-6">
-          <label htmlFor="article-title" className="form-label">Article Title</label>
+          <label htmlFor="title" className="form-label">Article Title</label>
           <input
-            id="article-title"
-            name="article_title"
+            id="title"
+            name="title"
             type="text"
             className="form-control"
             placeholder="Enter Article Title"
-            value={article.article_title}
+            value={article.title}
             onChange={handleInputChange}
             required
           />
         </div>
         <div className="col-md-6">
-          <label htmlFor="article-subtitle" className="form-label">Article Subtitle</label>
+          <label htmlFor="subtitle" className="form-label">Article Subtitle</label>
           <input
-            id="article-subtitle"
-            name="article_subtitle"
+            id="subtitle"
+            name="subtitle"
             type="text"
             className="form-control"
             placeholder="Enter Article Subtitle"
-            value={article.article_subtitle}
+            value={article.subtitle}
             onChange={handleInputChange}
             required
           />
@@ -163,25 +159,25 @@ const CreateArticle = () => {
       </div>
 
       <div className="mb-3">
-        <label htmlFor="article-description" className="form-label">Article Description</label>
+        <label htmlFor="description" className="form-label">Article Description</label>
         <textarea
-          id="article-description"
-          name="article_description"
+          id="description"
+          name="description"
           className="form-control"
           placeholder="Enter Article Description"
-          value={article.article_description}
+          value={article.description}
           onChange={handleInputChange}
           required
         />
       </div>
 
       <div className="mb-3">
-        <label htmlFor="article-category" className="form-label">Category</label>
+        <label htmlFor="category" className="form-label">Category</label>
         <select
-          id="article-category"
-          name="article_category"
+          id="category"
+          name="category"
           className="form-select"
-          value={article.article_category}
+          value={article.category}
           onChange={handleInputChange}
           required
         >
@@ -191,7 +187,6 @@ const CreateArticle = () => {
           <option value="nutrition">Nutrition</option>
         </select>
       </div>
-
 
       <div
         className={`dropzone-area p-3 rounded ${imagePreview ? "has-image" : ""}`}
@@ -245,7 +240,6 @@ const CreateArticle = () => {
         </button>
       </div>
     </form>
-
   );
 };
 

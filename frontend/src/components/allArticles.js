@@ -9,16 +9,16 @@ export const AllArticles = () => {
     const [articlesList, setArticlesList] = useState([]);
     const navigate = useNavigate();
     const [articleToDelete, setArticleToDelete] = useState();
-    const { data: articles, loading, error } = useGetFetch(`${process.env.REACT_APP_BACKEND_URL}api/articles`);
+    const { data: articles, loading, error } = useGetFetch(`${process.env.REACT_APP_BACKEND_URL}blog/post_list`);
   
   useEffect(() => {
     if (!loading && !error) {
         setArticlesList(articles);
     }
   }, [articles, loading, error]);
-                
+
     const deleteArticle = () => {
-        const apiUrl = `${process.env.REACT_APP_BACKEND_URL}api/article/delete/${articleToDelete}`;
+        const apiUrl = `${process.env.REACT_APP_BACKEND_URL}blog/post/delete/${articleToDelete}`;
         fetch(apiUrl, {
             method: "DELETE",
             headers: {
@@ -39,7 +39,7 @@ export const AllArticles = () => {
     }
 
     const handleEyeClick = (id) => {
-        navigate(`/blog/article/${id}`);
+        navigate(`/blog/post/${id}`);
     }
 
     const handlePenClick = (item_id) => {
@@ -50,7 +50,7 @@ export const AllArticles = () => {
         return articlesList.map((item, index) => {
             return (
                 <article id="admin_article_list" key={index}>
-                    <p>{item.article_title}</p>
+                    <p>{item.title}</p>
                     <div>
                         <i onClick={() => handleEyeClick(item.id)} className="fa-solid fa-eye me-3"></i>
                         <i onClick={() => handlePenClick(item.id)} data-bs-toggle="modal" data-bs-target="#editModal" className="fa-solid fa-pen me-3"></i>

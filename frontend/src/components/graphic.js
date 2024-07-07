@@ -10,7 +10,7 @@ const Graphic = ({onBack, client}) => {
 
     useEffect(() => {
         const fetchRecords = () => {
-            fetch(`${process.env.REACT_APP_BACKEND_URL}api/weight_graphic/${client}`)
+            fetch(`${process.env.REACT_APP_BACKEND_URL}myapp/api/weight_graphic/${client}`)
                 .then(res => {
                     if (!res.ok) {
                         throw new Error('Network response was not ok');
