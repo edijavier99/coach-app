@@ -84,7 +84,7 @@ const ArticleContent = ({ article, copyToClipboard }) => {
             </header>
             <main className="row col-10 mx-auto">
                 <div className="article-info d-flex justify-content-center mb-4">
-                    <strong className="me-4"> Jesus Antonio</strong> | <span className="mx-4">{formatDate(article.day_posted)}</span> | <span className="ms-4">{readingTime} {readingTime === 1 ? 'minute' : 'minutes'}</span>
+                    <strong className="me-4 small"> Jesus Antonio</strong> | <span className="mx-4 small">{formatDate(article.day_posted)}</span> | <span className="ms-4 small">{readingTime} {readingTime === 1 ? 'minute' : 'minutes'}</span>
                 </div>
                 
                 <div className="row align-items-center">
@@ -110,7 +110,6 @@ const ArticleContent = ({ article, copyToClipboard }) => {
                 <div className="share-buttons bg-dark text-light mb-4">Share Article
                     <i className="fa-solid fa-copy ms-3" onClick={copyToClipboard}></i>
                 </div>
-                {/* Button to copy link */}
             </footer>
         </article>
     );

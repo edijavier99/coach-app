@@ -1,5 +1,7 @@
 // components/BlogCard.js
 import React from "react";
+import DOMPurify from "dompurify";
+
 
 export const BlogCard = ({ article }) => {
   return (
@@ -19,12 +21,14 @@ export const BlogCard = ({ article }) => {
       </span>
       <div className="card-body">
         <h5 className="card-title">{article.title}</h5>
-        <p className="card-text">{article.description}</p>
+        <div className="card-text"
+                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article.description) }}
+        /> 
         <a
           href={`blog/post/${article.id}`}
           className="booking mt-3"
         >
-          Learn More
+          Continue Reading
         </a>
       </div>
       <div className="card-footer text-muted">{article.day_posted}</div>
