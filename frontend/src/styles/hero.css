@@ -103,7 +103,7 @@
     }
     .carousel-image {
         object-fit: cover;
-        object-position: 65%; /* Adjust these values to show the part of the image you want */
+        object-position: 70%; /* Adjust these values to show the part of the image you want */
     }
 }
 
