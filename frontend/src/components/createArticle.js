@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../styles/createArticle.css";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const CreateArticle = () => {
   const cloudName = 'dhyrv5g3w';
@@ -8,34 +10,40 @@ const CreateArticle = () => {
     title: "",
     subtitle: "",
     description: "",
-    category: "fitness"
+    category: "fitness",
+    second_paragraph: "",
   });
 
-  const [files, setFiles] = useState([]);
-  const [imagePreview, setImagePreview] = useState(null);
+  const [files, setFiles] = useState({
+    image: null,
+    secondImage: null,
+    imagePreview: null,
+    secondImagePreview: null,
+  });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setArticle({
-      ...article,
-      [name]: value
-    });
+  const handleInputChange = ({ target: { name, value } }) => {
+    setArticle(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleFileInputChange = (e) => {
+  const handleQuillChange = (name, value) => {
+    setArticle(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleFileChange = (name, e) => {
     const file = e.target.files[0];
     if (file) {
-      updateDropzoneFileList(file);
-      previewImage(file);
+      updateFileState(name, file);
+      previewImage(file, name === 'image' ? 'imagePreview' : 'secondImagePreview');
     }
   };
 
-  const previewImage = (file) => {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImagePreview(reader.result);
-    };
-    reader.readAsDataURL(file);
+  const handleDrop = (name, e) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
+    if (file) {
+      updateFileState(name, file);
+      previewImage(file, name === 'image' ? 'imagePreview' : 'secondImagePreview');
+    }
   };
 
   const handleDropzoneDrag = (e) => {
@@ -43,17 +51,16 @@ const CreateArticle = () => {
     e.stopPropagation();
   };
 
-  const handleDropzoneDrop = (e) => {
-    e.preventDefault();
-    const file = e.dataTransfer.files[0];
-    if (file) {
-      updateDropzoneFileList(file);
-      previewImage(file);
-    }
+  const previewImage = (file, previewName) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setFiles(prev => ({ ...prev, [previewName]: reader.result }));
+    };
+    reader.readAsDataURL(file);
   };
 
-  const updateDropzoneFileList = (file) => {
-    setFiles([file]);
+  const updateFileState = (name, file) => {
+    setFiles(prev => ({ ...prev, [name]: file }));
   };
 
   const handleReset = () => {
@@ -61,25 +68,26 @@ const CreateArticle = () => {
       title: "",
       subtitle: "",
       description: "",
-      category: "fitness"
+      category: "fitness",
+      second_paragraph: ""
     });
-    setFiles([]);
-    setImagePreview(null);
+    setFiles({
+      image: null,
+      secondImage: null,
+      imagePreview: null,
+      secondImagePreview: null,
+    });
   };
 
   const uploadToCloudinary = async (file) => {
-    const folder = "BlogJesus";  // Especifica el nombre de la carpeta aquí
+    const folder = "BlogJesus";
     const url = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
     const formData = new FormData();
     formData.append('file', file);
     formData.append('upload_preset', uploadPreset);
     formData.append('folder', folder);
 
-    const response = await fetch(url, {
-      method: 'POST',
-      body: formData,
-    });
-
+    const response = await fetch(url, { method: 'POST', body: formData });
     if (response.ok) {
       const data = await response.json();
       return data.secure_url;
@@ -91,12 +99,21 @@ const CreateArticle = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let image_url = '';
-    if (files.length > 0) {
+    let image_url_tow = '';
+    if (files.image) {
       try {
-        const file = files[0];
-        image_url = await uploadToCloudinary(file);
+        image_url = await uploadToCloudinary(files.image);
       } catch (error) {
         console.error("Error uploading image:", error);
+        return;
+      }
+    }
+
+    if (files.secondImage) {
+      try {
+        image_url_tow = await uploadToCloudinary(files.secondImage);
+      } catch (error) {
+        console.error("Error uploading second image:", error);
         return;
       }
     }
@@ -104,16 +121,14 @@ const CreateArticle = () => {
     const articleData = {
       ...article,
       image_url,
-      slug : article.title
+      image_url_tow,
+      slug: article.title.toLowerCase().replace(/ /g, '-')
     };
 
     try {
-      console.log(articleData);
       const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}blog/post/create/`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(articleData)
       });
 
@@ -159,14 +174,26 @@ const CreateArticle = () => {
       </div>
 
       <div className="mb-3">
-        <label htmlFor="description" className="form-label">Article Description</label>
-        <textarea
+        <label htmlFor="description" className="form-label">Article First Paragraph</label>
+        <ReactQuill
           id="description"
           name="description"
           className="form-control"
-          placeholder="Enter Article Description"
+          placeholder="First Paragraph"
           value={article.description}
-          onChange={handleInputChange}
+          onChange={(value) => handleQuillChange('description', value)}
+          required
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="second_paragraph" className="form-label">Article Second Paragraph</label>
+        <ReactQuill
+          id="second_paragraph"
+          name="second_paragraph"
+          className="form-control"
+          placeholder="Second Paragraph"
+          value={article.second_paragraph}
+          onChange={(value) => handleQuillChange('second_paragraph', value)}
           required
         />
       </div>
@@ -189,13 +216,13 @@ const CreateArticle = () => {
       </div>
 
       <div
-        className={`dropzone-area p-3 rounded ${imagePreview ? "has-image" : ""}`}
+        className={`dropzone-area p-3 rounded ${files.imagePreview ? "has-image" : ""}`}
         onDragOver={handleDropzoneDrag}
         onDragLeave={handleDropzoneDrag}
-        onDrop={handleDropzoneDrop}
+        onDrop={(e) => handleDrop('image', e)}
       >
-        {imagePreview ? (
-          <img src={imagePreview} alt="Uploaded" className="uploaded-image mb-3" />
+        {files.imagePreview ? (
+          <img src={files.imagePreview} alt="Uploaded" className="uploaded-image mb-3" />
         ) : (
           <div className="text-center">
             <div className="file-upload-icon mb-3">
@@ -220,17 +247,62 @@ const CreateArticle = () => {
               id="upload-file"
               name="uploaded-file"
               className="d-none"
-              onChange={handleFileInputChange}
+              onChange={(e) => handleFileChange('image', e)}
             />
             <label htmlFor="upload-file" className="btn btn-outline-primary">
               Choose File
             </label>
             <p className="message mt-3">
-              {files.length > 0 ? `${files[0].name}, ${files[0].size} bytes` : "No Files Selected"}
+              {files.image ? `${files.image.name}, ${files.image.size} bytes` : "No Files Selected"}
             </p>
           </div>
         )}
       </div>
+
+      <div
+        className={`dropzone-area p-3 rounded ${files.secondImagePreview ? "has-image" : ""}`}
+        onDragOver={handleDropzoneDrag}
+        onDragLeave={handleDropzoneDrag}
+        onDrop={(e) => handleDrop('secondImage', e)}
+      >
+        {files.secondImagePreview ? (
+          <img src={files.secondImagePreview} alt="Uploaded" className="uploaded-image mb-3" />
+        ) : (
+          <div className="text-center">
+            <div className="file-upload-icon mb-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z" />
+              </svg>
+            </div>
+            <p>Click to upload or drag and drop</p>
+            <input
+              type="file"
+              id="upload-second-file"
+              name="uploaded-second-file"
+              className="d-none"
+              onChange={(e) => handleFileChange('secondImage', e)}
+            />
+            <label htmlFor="upload-second-file" className="btn btn-outline-primary">
+              Choose File
+            </label>
+            <p className="message mt-3">
+              {files.secondImage ? `${files.secondImage.name}, ${files.secondImage.size} bytes` : "No Files Selected"}
+            </p>
+          </div>
+        )}
+      </div>
+
       <div className="dropzone-actions mt-4 d-flex justify-content-between">
         <button type="reset" className="btn btn-secondary" onClick={handleReset}>
           Cancel

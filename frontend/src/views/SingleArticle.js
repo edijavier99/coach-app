@@ -1,9 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import DOMPurify from "dompurify";
 import "../styles/components/singleArticle.css";
 
 const Loading = () => <p>Loading...</p>;
 const Error = ({ message }) => <p>Error: {message}</p>;
+
+const calculateReadingTime = (text,text_two) => {
+    const wordsPerMinute = 250; // Promedio de palabras por minuto
+    const words = text.split(/\s+/).length;
+    const words_two = text_two.split(/\s+/).length;
+    const minutes = Math.ceil((words+words_two) / wordsPerMinute);
+    return minutes;
+};
+
+const formatDate =  (dateString) =>{
+    const date = new Date(dateString)
+    return date.toISOString().slice(0,10)
+}   
 
 export const SingleArticle = () => {
     const { id } = useParams();
@@ -53,45 +67,48 @@ export const SingleArticle = () => {
 };
 
 const ArticleContent = ({ article, copyToClipboard }) => {
-
     const capitalizeFirstLetter = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     };
+
+    const readingTime = calculateReadingTime(article.description,article.second_paragraph);
 
     return (
         <article id="blog-article">
             <header className="row col-10 mx-auto">
                 <div className="col-12 text-center">
-                    <p className="mt-3">{capitalizeFirstLetter(article.category)}</p>
+                    <p className="mt-3 article-category">{capitalizeFirstLetter(article.category)}</p>
                     <h1 className="my-3">{article.title}</h1>
-                    <p className="text-muted mb-5">{article.subtitle}</p>
+                    <p className="text-muted ">{article.subtitle}</p>
                 </div>
             </header>
             <main className="row col-10 mx-auto">
-                <div className="col-12 col-md-6 article-image-container">
-                    <img src={article.image_url} alt={`${article.title}`} />
+                <div className="article-info d-flex justify-content-center mb-4">
+                    <strong className="me-4"> Jesus Antonio</strong> | <span className="mx-4">{formatDate(article.day_posted)}</span> | <span className="ms-4">{readingTime} {readingTime === 1 ? 'minute' : 'minutes'}</span>
                 </div>
-                <div className="col-12 col-md-6">
-                    <p>{article.description && (
-                        <>
-                            <span className="first-letter">{article.description.charAt(0)}</span>
-                            {article.description.slice(1)}
-                        </>
-                    )}</p>
+                
+                <div className="row align-items-center">
+                    <div className="col-12 col-md-6 col-lg-6"
+                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article.description) }}
+                    />
+                    <div className="col-12 col-md-6 col-lg-6 article-image-container my-5">
+                        <img src={article.image_url} alt={`${article.title}`} />
+                    </div>
                 </div>
+
+                <div className="row align-items-center">
+                <div className="col-12 col-md-6 col-lg-6 article-image-container my-5">
+                        <img src={article.image_url_tow} alt={`${article.title}`} />
+                    </div>
+                    <div className="col-12 col-md-6 col-lg-6"
+                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article.second_paragraph) }}
+                    />   
+                </div>
+                
             </main>
             <footer className="row mx-auto col-10 mt-5 text-center">
-                <p className="text-muted">{article.day_posted}</p>
-                <div className="share-buttons">
-                    <p className="mb-2 text-muted">Share this article</p>
-                    {/* Share buttons */}
-                    <a href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`} target="_blank" rel="noopener noreferrer">
-                        <i className="fa-brands fa-facebook"></i>
-                    </a>
-                    <a href={`https://www.linkedin.com/shareArticle?url=${window.location.href}`} target="_blank" rel="noopener noreferrer">
-                        <i className="fa-brands fa-linkedin"></i>
-                    </a>
-                    <i className="fa-solid fa-copy" onClick={copyToClipboard}></i>
+                <div className="share-buttons bg-dark text-light mb-4">Share Article
+                    <i className="fa-solid fa-copy ms-3" onClick={copyToClipboard}></i>
                 </div>
                 {/* Button to copy link */}
             </footer>

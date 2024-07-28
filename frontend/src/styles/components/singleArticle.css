@@ -5,6 +5,12 @@
 #blog-article header p{
     font-size: 20px;
 }
+.article-category{
+    border: 2px solid black;
+    width: 100px;
+    margin: 0 auto;
+    font-weight: 800;
+}
 .article-image-container{
     height: 450px;
 }
@@ -12,7 +18,6 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
-    border-radius: 20px;
 }
 #blog-article main p {
     font-size: 17px;
@@ -24,5 +29,14 @@
 .fa-facebook, .fa-linkedin , .fa-copy{
     font-size: 25px;
     margin-right: 20px;
-    color: rgb(47, 158, 183);
+    color: white;
+}
+.share-buttons{
+    width: 25%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    justify-content: center;
 }
