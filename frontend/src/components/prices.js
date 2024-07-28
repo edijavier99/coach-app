@@ -12,7 +12,7 @@ export const Prices = () => {
       </p>
       <div className="grid col-11">
         <div>
-          <article className="card col-12 col-lg-11 mx-auto first-card">
+          <article className="card prices-card col-12 col-lg-11 mx-auto first-card">
             <h2>Mindset</h2>
             <var><abbr>£</abbr>25<small>/Session</small></var>
             <ul>
@@ -37,7 +37,7 @@ export const Prices = () => {
           </article>
         </div>
         <div className="primary">
-          <article className="card col-12 col-lg-11 mx-auto">
+          <article className="card  prices-card col-12 col-lg-11 mx-auto">
             <h2>Fitness</h2>
             <var><abbr>£</abbr>35<small>/Session</small></var>
             <ul>
@@ -66,7 +66,7 @@ export const Prices = () => {
           </article>
         </div>
         <div>
-          <article className="card col-12 col-lg-11 mx-auto third-card">
+          <article className="card prices-card col-12 col-lg-11 mx-auto third-card">
             <h2>Health</h2>
             <var><abbr>£</abbr>30<small>/Session</small></var>
             <ul>

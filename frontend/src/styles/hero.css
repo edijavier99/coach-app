@@ -7,36 +7,9 @@
     height: 100vh;
     object-fit: cover;
 }
-.carousel-caption {
-    position: absolute; 
-    right: 15%;
-    top: 0px; 
-    left: 15%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
 
-.carousel-inner h2{
-    margin-left: -30px;
-    font-size: 70px;
-    color: white;
-}
-.carousel-inner h3{
-    margin-left: 40px;
-    font-size: 60px;
-    color: white;
-}
-.carousel-inner h4{
-    margin-left: 90px;
-    font-size: 50px;
-    color: white;
-}
 .slogan-header {
-    font-size: 5.3rem;
+    font-size: 5rem;
     font-weight: 900;
     color: white;
     display: flex;
@@ -45,25 +18,43 @@
     text-align: center; 
 }
 .slogan-description {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     color: white;
     text-align: center; 
+    width: 65%;
+    margin: 0 auto;
 }
 #slogan{
-    border-radius: 20px;
     height: auto !important;
     margin-bottom: 60px;
+    width: 80%;
+    margin-left: 50px;   
 }
+
 
 .carousel-dark .carousel-indicators [data-bs-target] {
-    background-image: url("https://images.unsplash.com/photo-1575722290270-626b0208df99?q=80&w=2432&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-    background-size: cover;
-    width:25px;
-    height: 25px;
+    width:15px;
+    height: 15px;
     border-radius: 50%;
     margin-bottom: 90px;
+    background-color: white;
 }
 
+
+@media (max-width:992px) {
+    .slogan-header {
+        font-size: 4rem;
+    }
+    .slogan-description {
+        font-size: 1.1rem;
+        width: 75%;
+    }
+}
+@media (max-width:880px) {
+    .slogan-header {
+        font-size: 3.5rem;
+    }
+}
 @media (max-width:768px){
     .carousel-caption {
         top: -100px;
@@ -71,10 +62,11 @@
     .slogan-header {
         font-size: 3rem;
         margin-bottom: 27px !important;
-    } 
-    .slogan-description {
-        font-size: 1.3rem;
     }
+    .slogan-description {
+        font-size: 1.1rem;
+        width: 85%;
+    } 
     #slogan {
         margin-bottom: 60px;
         margin-bottom: 27px !important;
@@ -87,39 +79,54 @@
 
 @media (max-width:576px){
     .slogan-header {
-        font-size: 2.7rem;
+        font-size: 2.4rem;
         margin-bottom: 15px !important;
     }
     #slogan {
         margin-bottom: 15px !important;
     }
-    .slogan-description {
-        font-size: 1rem;
+    .bookingBtnContainer{
+        margin-top: 40px !important;
     }
 }
-@media (max-width: 470px){
-    .smallSlogan{
-        display: flex;
-        justify-content: center;
-        flex-direction: column !important;
+@media (max-width: 515px){
+    .slogan-header {
+        font-size:2rem;
     }
-    .carousel-inner h2{
-        margin-left:0 !important;
-        font-size: 40px;
-        color: white;
+    .carousel-item-1 .slogan-description, .carousel-item-2 .carousel-caption, .carousel-item-3 .carousel-caption {
+        font-size: 1.1rem;
+        width: 95%;
     }
-    .carousel-inner h3{
-        margin-left:0 !important;
-        font-size: 30px;
-        color: white;
+    .carousel-caption {
+        width: 100%;
     }
-    .carousel-inner h4{
-        margin-left:0 !important;
-        font-size: 20px;
-        color: white;
-    }
-    #description1{
-    display: none;    
 }
-    
+
+
+/* #carousel-item-1 CSS  */
+.carousel-item-1 .carousel-caption {
+    position: absolute; 
+    top: -100px; 
+    left: 0px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
 }
+
+
+/* #carousel-item-2 CSS  */
+
+.carousel-item-2 .carousel-caption, .carousel-item-3 .carousel-caption {
+    position: absolute; 
+    top: -100px; 
+    padding-bottom: 20px;
+    display: flex;
+    width: 100%;
+    left: 0;
+    justify-content:center;
+    flex-direction: column;
+    align-items: center;
+}
+
+

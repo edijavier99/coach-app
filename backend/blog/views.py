@@ -27,6 +27,7 @@ def blog_home(request):
 @api_view(['POST'])
 # @permission_classes([IsAuthenticated])
 def article_create(request):
+    print(request.data)
     serializer = PostSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()

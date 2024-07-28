@@ -9,6 +9,7 @@ import { Newsletter } from "../components/newsletter";
 import { Footer } from "../components/footer";
 import { Prices } from "../components/prices";
 import { Reviews } from "../components/reviews";
+import "../styles/app.css"
 
 function Home() {
   const menu = [
@@ -23,13 +24,6 @@ function Home() {
   return (
     <section>
       <Navbar items={menu}  />
-      <PopupWidget
-        url="https://calendly.com/edijavier10"
-        rootElement={document.getElementById("root")}
-        text="Click here to schedule!"
-        textColor="#ffffff"
-        color="#00a2ff"
-      />
       <Hero />
       <Introduction />
       <Services/>

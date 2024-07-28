@@ -15,7 +15,7 @@ export const CheckForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const apiUrl = `${process.env.REACT_APP_BACKEND_URL}api/verify-client`;
+        const apiUrl = `${process.env.REACT_APP_BACKEND_URL}myapp/api/verify-client`;
         fetch(apiUrl,{
           method: "POST",
           headers: {

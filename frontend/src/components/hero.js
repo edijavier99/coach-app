@@ -35,34 +35,37 @@ export const Hero = () => {
         </div>
         <div className="carousel-inner">
           <CarouselItem
+            customClass="carousel-item-1"
             active
-            image="https://cdn.pixabay.com/photo/2021/05/14/08/44/running-6252827_1280.jpg"
-            slogan="Small steps thrive amid significant changes"
-            sloganDescription="We help you enhance your physical, mental, and overall health. Through small adjustments in mindset, nutrition, and physical activity, even minor changes can lead to remarkable transformations."
-          />
+            image="https://images.unsplash.com/photo-1434719079929-f61498a4828e?q=80&w=2948&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            slogan="Small steps brings significant changes"
+            sloganDescription="Transforming your life begins with changing your mindset. Embrace positivity, set realistic goals, and believe in yourself. Small changes, when consistent, lead to big results. We'll guide you every step of the way."
+            />
           <CarouselItem
-            image="https://images.unsplash.com/flagged/photo-1556746834-1cb5b8fabd54?q=80&w=2944&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            slogan="Small steps thrive amid significant changes"
-            sloganDescription="We help you enhance your physical, mental, and overall health. Through small adjustments in mindset, nutrition, and physical activity, even minor changes can lead to remarkable transformations."
-          />
+            customClass="carousel-item-2"
+            image="https://images.unsplash.com/photo-1528720208104-3d9bd03cc9d4?q=80&w=2624&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            slogan="Fitness fuels the mind"
+            sloganDescription="Regular physical activity is a powerful tool for mental clarity and emotional resilience. Engaging in the right fitness routine tailored to your lifestyle will not only boost your physical health but also enhance your mindset and overall well-being."
+            />
           <CarouselItem
-            image="https://plus.unsplash.com/premium_photo-1679938885972-180ed418f466?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            slogan="Small steps thrive amid significant changes"
-            sloganDescription="We help you enhance your physical, mental, and overall health. Through small adjustments in mindset, nutrition, and physical activity, even minor changes can lead to remarkable transformations."
-          />
+            customClass="carousel-item-3"
+            image="https://images.unsplash.com/photo-1594882645126-14020914d58d?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            slogan="Nutrition nurtures the soul"
+            sloganDescription="What you eat affects how you feel. Making mindful nutrition choices will not only fuel your body but also elevate your mood, enhance your mental well-being, and help you achieve a balanced, fulfilling lifestyle."
+            />
 
           {/* MODAL TO USE IN ALL THE LANDING PAGE TO SHOW THE CHECK FORM */}
           <div
             className="modal fade"
-            id="exampleModal"
+            id="HeroLoginModal"
             tabIndex="-1"
-            aria-labelledby="exampleModalLabel"
+            aria-labelledby="HeroLoginModalLabel"
             aria-hidden="true"
           >
             <div className="modal-dialog modal-dialog-centered">
               <div className="modal-content">
                 <div className="modal-header">
-                  <h5 className="modal-title" id="exampleModalLabel">
+                  <h5 className="modal-title" id="HeroLoginModalLabel">
                     Welcome! 
                   </h5>
                   <button
@@ -99,7 +102,7 @@ export const Hero = () => {
           data-bs-slide="prev"
         >
           <span
-            className="carousel-control-prev-icon"
+            className="carousel-control-prev-icon visually-hidden"
             aria-hidden="true"
           ></span>
           <span className="visually-hidden">Previous</span>
@@ -111,7 +114,7 @@ export const Hero = () => {
           data-bs-slide="next"
         >
           <span
-            className="carousel-control-next-icon"
+            className="carousel-control-next-icon visually-hidden"
             aria-hidden="true"
           ></span>
           <span className="visually-hidden">Next</span>
