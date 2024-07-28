@@ -133,6 +133,7 @@ const CreateArticle = () => {
       });
 
       if (response.ok) {
+        console.log(articleData);
         handleReset(); 
       } else {
         console.error("Error saving article:", response.statusText);
