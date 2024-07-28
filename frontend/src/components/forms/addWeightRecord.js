@@ -24,7 +24,7 @@ const AddWeightRecord = ({ client_id }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const apiUrl = `${process.env.REACT_APP_BACKEND_URL}api/create-weight-graphic/${client_id}/`;
+        const apiUrl = `${process.env.REACT_APP_BACKEND_URL}myapp/api/create-weight-graphic/${client_id}/`;
     
         try {
             const response = await fetch(apiUrl, {

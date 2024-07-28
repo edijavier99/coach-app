@@ -1,0 +1,19 @@
+@keyframes show {
+    from  {
+      opacity: 0;
+      scale: 25%;
+    }
+    to {
+      opacity: 1;
+      scale: 100%;
+    }
+  }
+   .profile-image-container, .prices-card,.review-name-card{
+    view-timeline-name : --container;
+    view-timeline-axis: block;
+    animation-timeline: --container;
+    animation-name: show;
+  
+    animation-range: entry 25% cover 50%;
+    animation-fill-mode: both;
+  }

@@ -19,7 +19,7 @@ export const BookingButton = () => {
         <button
             className="btn booking my-3"
             data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
+            data-bs-target="#HeroLoginModal"
         >
             Make A Booking
         </button>

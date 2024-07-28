@@ -27,7 +27,7 @@ export const WelcomeForm = ({ setAutoProceed }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const apiUrl = `${process.env.REACT_APP_BACKEND_URL}api/client/create`;
+        const apiUrl = `${process.env.REACT_APP_BACKEND_URL}myapp/api/client/create`;
 
         Swal.fire({
             title: 'Confirm Email',

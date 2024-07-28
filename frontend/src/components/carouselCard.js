@@ -1,20 +1,21 @@
 import React from "react";
 import { BookingButton } from "./bookingButton";
 
-export const CarouselItem = ({ image, title, sloganDescription, slogan, active }) => {
-  const itemClass = active ? "carousel-item active" : "carousel-item";
+export const CarouselItem = ({ image, title, sloganDescription, slogan, active, customClass }) => {
   return (
-    <div className={itemClass} data-bs-interval="5000">
+    <div className={`carousel-item ${active ? 'active' : ''} ${customClass}`} data-bs-interval="5000" >
       <img src={image} className="d-block w-100" alt={title} />
-      <div className="carousel-caption">
+      <div className="carousel-caption ">
         <div
-          className="d-flex flex-column align-items-start justify-content-around"
+          className="d-flex flex-column  "
           id="slogan"
-        >
-          <h1 className="slogan-header mb-5">{slogan}</h1>
-          <p className="slogan-description">{sloganDescription}</p>
+          >
+            <h1 className="slogan-header mb-5">{slogan}</h1>
+            <p className="slogan-description">{sloganDescription}</p>
         </div>
-        <BookingButton />
+        <div className="mx-auto bookingBtnContainer">
+          <BookingButton />
+        </div>
       </div>
     </div>
   );
