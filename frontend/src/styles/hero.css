@@ -88,6 +88,7 @@
     .bookingBtnContainer{
         margin-top: 40px !important;
     }
+    
 }
 @media (max-width: 515px){
     .slogan-header {
@@ -99,6 +100,10 @@
     }
     .carousel-caption {
         width: 100%;
+    }
+    .carousel-image {
+        object-fit: cover;
+        object-position: 65%; /* Adjust these values to show the part of the image you want */
     }
 }
 
