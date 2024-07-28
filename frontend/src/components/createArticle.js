@@ -125,6 +125,9 @@ const CreateArticle = () => {
       slug: article.title.toLowerCase().replace(/ /g, '-')
     };
 
+    console.log("Data being sent to backend:", articleData);
+
+
     try {
       const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}blog/post/create/`, {
         method: 'POST',
