@@ -11,9 +11,8 @@ const calculateReadingTime = (text = "", text_two = "") => {
 
     // Default to empty string if undefined to avoid errors
     const words = text.split(/\s+/).length;
-    const words_two = text_two.split(/\s+/).length;
 
-    const minutes = Math.ceil((words + words_two) / wordsPerMinute);
+    const minutes = Math.ceil((words ) / wordsPerMinute);
     return minutes;
 };
 
