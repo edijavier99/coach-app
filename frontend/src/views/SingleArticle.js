@@ -6,20 +6,18 @@ import "../styles/components/singleArticle.css";
 const Loading = () => <p>Loading...</p>;
 const Error = ({ message }) => <p>Error: {message}</p>;
 
-const calculateReadingTime = (text = "", text_two = "") => {
+const calculateReadingTime = (text,text_two) => {
     const wordsPerMinute = 250; // Promedio de palabras por minuto
-
-    // Default to empty string if undefined to avoid errors
     const words = text.split(/\s+/).length;
-
-    const minutes = Math.ceil((words ) / wordsPerMinute);
+    const words_two = text_two.split(/\s+/).length;
+    const minutes = Math.ceil((words+words_two) / wordsPerMinute);
     return minutes;
 };
 
-const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toISOString().slice(0, 10);
-};
+const formatDate =  (dateString) =>{
+    const date = new Date(dateString)
+    return date.toISOString().slice(0,10)
+}   
 
 export const SingleArticle = () => {
     const { id } = useParams();
@@ -45,6 +43,7 @@ export const SingleArticle = () => {
         };
 
         fetchSingleArticle(); // Invoke fetchSingleArticle immediately
+
     }, [id]); // Dependency array includes 'id'
 
     const copyToClipboard = () => {
@@ -72,7 +71,7 @@ const ArticleContent = ({ article, copyToClipboard }) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     };
 
-    const readingTime = calculateReadingTime(article.description, article.second_paragraph);
+    const readingTime = calculateReadingTime(article.description,article.second_paragraph);
 
     return (
         <article id="blog-article">
@@ -80,14 +79,14 @@ const ArticleContent = ({ article, copyToClipboard }) => {
                 <div className="col-12 text-center">
                     <p className="mt-3 article-category">{capitalizeFirstLetter(article.category)}</p>
                     <h1 className="my-3">{article.title}</h1>
-                    <p className="text-muted">{article.subtitle}</p>
+                    <p className="text-muted ">{article.subtitle}</p>
                 </div>
             </header>
             <main className="row col-10 mx-auto">
                 <div className="article-info d-flex justify-content-center mb-4">
                     <strong className="me-4 small"> Jesus Antonio</strong> | <span className="mx-4 small">{formatDate(article.day_posted)}</span> | <span className="ms-4 small">{readingTime} {readingTime === 1 ? 'minute' : 'minutes'}</span>
                 </div>
-
+                
                 <div className="row align-items-center">
                     <div className="col-12 col-md-6 col-lg-6"
                         dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article.description) }}
@@ -98,14 +97,14 @@ const ArticleContent = ({ article, copyToClipboard }) => {
                 </div>
 
                 <div className="row align-items-center">
-                    <div className="col-12 col-md-6 col-lg-6 article-image-container my-5">
+                <div className="col-12 col-md-6 col-lg-6 article-image-container my-5">
                         <img src={article.image_url_tow} alt={`${article.title}`} />
                     </div>
                     <div className="col-12 col-md-6 col-lg-6"
                         dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article.second_paragraph) }}
-                    />
+                    />   
                 </div>
-
+                
             </main>
             <footer className="row mx-auto col-10 mt-5 text-center">
                 <div className="share-buttons bg-dark text-light mb-4">Share Article
