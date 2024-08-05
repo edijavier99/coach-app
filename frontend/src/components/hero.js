@@ -2,6 +2,9 @@ import React from "react";
 import "../styles/hero.css";
 import { CheckForm } from "./forms/checkForm";
 import { CarouselItem } from "./carouselCard";
+import ejercicio from  "../videos/ejercicio.mp4"
+import meditation  from "../videos/meditation.mp4"
+
 
 export const Hero = () => {
   return (
@@ -43,16 +46,19 @@ export const Hero = () => {
             />
           <CarouselItem
             customClass="carousel-item-2"
-            image="https://images.unsplash.com/photo-1528720208104-3d9bd03cc9d4?q=80&w=2624&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            // image="https://images.unsplash.com/photo-1528720208104-3d9bd03cc9d4?q=80&w=2624&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             slogan="Fitness fuels the mind"
+            video={true}
+            videoTitle={ejercicio}
             sloganDescription="Regular physical activity is a powerful tool for mental clarity and emotional resilience. Engaging in the right fitness routine tailored to your lifestyle will not only boost your physical health but also enhance your mindset and overall well-being."
             />
           <CarouselItem
             customClass="carousel-item-3"
-            image="https://images.unsplash.com/photo-1594882645126-14020914d58d?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            slogan="Nutrition nurtures the soul"
-            sloganDescription="What you eat affects how you feel. Making mindful nutrition choices will not only fuel your body but also elevate your mood, enhance your mental well-being, and help you achieve a balanced, fulfilling lifestyle."
-            />
+            slogan="Meditation Nurtures the Soul"
+            video={true}
+            videoTitle={meditation} // Asegúrate de que 'meditation' sea la ruta al video correcto
+            sloganDescription="Meditation calms the mind, reduces stress, and promotes inner peace. By incorporating mindful meditation into your routine, you can enhance mental clarity, achieve emotional balance, and foster a deeper sense of well-being."
+          />
 
           {/* MODAL TO USE IN ALL THE LANDING PAGE TO SHOW THE CHECK FORM */}
           <div

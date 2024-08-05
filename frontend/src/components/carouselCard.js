@@ -1,10 +1,27 @@
 import React from "react";
 import { BookingButton } from "./bookingButton";
 
-export const CarouselItem = ({ image, title, sloganDescription, slogan, active, customClass }) => {
+export const CarouselItem = ({ image, title, sloganDescription, slogan, active, customClass, video, videoTitle }) => {
   return (
     <div className={`carousel-item ${active ? 'active' : ''} ${customClass}`} data-bs-interval="5000" >
-      <img src={image} className="d-block w-100 carousel-image" alt={title} />
+     {
+      video ? 
+      <video
+        style={{zIndex: 99999}}
+        width="100%"   // Ajusta el ancho según sea necesario
+        height="100%"  // Mantiene la relación de aspecto  
+        autoPlay  
+        loop
+        muted   // Muestra controles de reproducción (play, pause, etc.)
+        title={title}
+      >
+        <source src={videoTitle} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+       :
+       <img src={image} className="d-block w-100 carousel-image" alt={title} />
+
+     } 
       <div className="carousel-caption ">
         <div
           className="d-flex flex-column  "
