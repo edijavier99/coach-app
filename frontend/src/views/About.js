@@ -59,12 +59,12 @@ export const About = () =>{
                             <img alt="perseverance" src="https://images.unsplash.com/photo-1682686578023-dc680e7a3aeb?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
                             </article>
                             <article className="value-card">
-                                <h4>Discipline</h4>
+                                <h4>Stick To The Plan</h4>
                                 <p>Discipline is essential for success in any area of life. It involves maintaining a consistent focus, following a routine, and having the self-control necessary to meet set goals.</p>
                                 <img alt="discipline" src="https://images.unsplash.com/photo-1559595500-e15296bdbb48?q=80&w=2831&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
                             </article>
                             <article className="value-card">
-                                <h4>Patience</h4>
+                                <h4>Step By Step</h4>
                                 <p>Patience is the ability to wait calmly and without anxiety. It is crucial for managing stress, making sound decisions, and building strong, lasting relationships.</p>
                                 <img alt="patience" src="https://images.unsplash.com/photo-1533630160910-65f5a1718c65?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
                             </article>
